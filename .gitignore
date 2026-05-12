@@ -43,3 +43,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+.env
+.env.* // Ignore all .env files (나중에 .env.prod, .env.dev 등 추가할 경우에 대비)
