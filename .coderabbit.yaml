@@ -1,0 +1,182 @@
+language: "ko-KR"
+
+reviews:
+  profile: chill  # 리뷰 스타일 설정: 'chill'(일반적) or 'assertive'(깐깐함)
+  request_changes_workflow: false  # 리뷰 이슈 해결 전까지 PR 승인 보류
+  
+  high_level_summary: false  # PR 설명에 변경사항 상위 요약 추가 여부
+  
+  review_status: true  # 각 리뷰 후 상태 요약 코멘트 게시 여부
+  commit_status: true  # 리뷰 진행 상태 표시 (기본값: true)
+  fail_commit_status: false  # 리뷰 불가 시 커밋 상태를 failure로 표시
+  
+  collapse_walkthrough: true  # 긴 설명 자동 접기
+  changed_files_summary: true  # 워크스루에 변경 파일 목록 요약 포함 여부
+  sequence_diagrams: false  # 워크스루에 시퀀스 다이어그램 포함
+
+  assess_linked_issues: false  # PR에 연결된 이슈 반영 평가
+  related_issues: false  # 워크스루에 관련 이슈 포함 여부
+  related_prs: false  # 워크스루에 관련 PR 포함 여부
+  
+  suggested_labels: false  # 변경 내용 기반 라벨 추천 여부
+  
+  suggested_reviewers: false  # 코드 변경에 따른 리뷰어 추천
+  
+  poem: false  # 워크스루 코멘트에 재미 요소(시 등) 추가 여부
+  
+  path_filters:  # 리뷰에 포함/제외할 파일 경로 패턴 목록
+    # Dart build & tool
+    - "!**/.dart_tool/**"
+    - "!**/build/**"
+
+    # Generated files
+    - "!**/*.g.dart"
+    - "!**/*.freezed.dart"
+    - "!**/*.gen.dart"
+
+    # Platform-specific generated files
+    - "!**/ios/Flutter/**"
+    - "!**/android/.gradle/**"
+    - "!**/windows/**"
+    - "!**/macos/**"
+    - "!**/linux/**"
+    - "!**/web/**"
+
+    # IDE 및 설정 파일
+    - "!**/.idea/**"
+    - "!**/.metadata"
+
+    # 환경 파일
+    - "!**/.env"
+
+    # ETC
+    - "!**/pubspec.lock" # Dart 패키지 의존성 파일
+    - "!**/*.iml" # IntelliJ/Android Studio 모듈 파일
+    - "!**/*.md"
+
+
+  path_instructions:  # 레이어별 리뷰 지침 목록 (파일 경로 패턴별로 다른 리뷰 지침 적용)
+    # Presentation (UI 레이어) : build() 가벼운지 + UI와 로직 분리
+    - path: "lib/**/presentation/**"
+      instructions: |
+        Focus on Flutter UI best practices:
+        - Avoid unnecessary widget rebuilds
+        - Check proper use of const constructors
+        - Ensure separation between UI and business logic
+        - Avoid heavy logic inside build() method
+        - Suggest widget extraction if build method is too large
+        - Avoid rebuilding entire widget trees unnecessarily
+
+        Pay attention to:
+        - State management misuse
+        - Readability of widget tree
+
+    # Domain (비즈니스 로직 레이어) : Flutter 의존성 없는지 + 아키텍처 적절한지
+    - path: "lib/**/domain/**"
+      instructions: |
+        Focus on business logic correctness and architecture:
+        - Ensure domain layer is independent of Flutter/UI
+        - Validate clear separation of concerns
+        - Check for proper modeling of entities and use cases
+
+        Avoid UI or framework-specific dependencies.
+
+    # Data (API, Repository 레이어) : 에러 처리 + 데이터 변환 적절한지
+    - path: "lib/**/data/**"
+      instructions: |
+        Focus on data handling and reliability:
+        - Check error handling for API calls
+        - Ensure proper null safety and type safety
+        - Validate mapping between DTOs and domain models
+        - Avoid leaking raw API responses into other layers
+
+        Suggest improvements for resilience and maintainability.
+
+    # Core (공통 인프라)
+    - path: "lib/core/**"
+      instructions: |
+        Focus on reusability and global impact:
+        - Ensure utilities and services are generic and reusable
+        - Avoid tight coupling with specific features
+        - Validate configuration and routing logic
+        - Validate navigation logic and route safety
+
+        Be cautious with changes that affect the entire app.
+
+    # Shared (공통 위젯) : 재사용성 + 일관성 고려
+    - path: "lib/shared/**"
+      instructions: |
+        Focus on reusability and consistency:
+        - Ensure shared widgets are generic and not feature-specific
+        - Check for consistent naming and API design
+        - Avoid duplication across features
+
+        Suggest improvements that enhance reuse across the app.
+
+  instructions: | # 일반 지침 목록
+    Focus on meaningful issues over minor stylistic suggestions.
+
+    Prioritize:
+    - Bugs, null safety issues, and runtime risks
+    - Incorrect state management or widget lifecycle misuse
+    - Performance issues (unnecessary rebuilds, heavy computations in build)
+    - Violations of Flutter and Dart best practices
+
+    Deprioritize:
+    - Minor formatting issues (handled by dart format)
+    - Trivial naming suggestions unless they affect clarity significantly
+
+    Strongly flag:
+    - Business logic inside UI layer
+    - Direct API usage inside presentation layer
+    - Missing error handling in async operations
+
+    Keep feedback concise and actionable.
+    Avoid repeating obvious information.
+
+    When suggesting improvements, explain why it matters in Flutter context.
+
+
+  abort_on_close: true  # PR이 닫히거나 병합되면 진행 중인 리뷰 중단 여부
+
+  disable_cache: false  # 코드/의존성 캐싱 비활성화 여부
+
+  # 자동 리뷰 설정
+  auto_review:
+    enabled: true  # 자동 코드 리뷰 활성화 여부
+
+    auto_incremental_review: true  # 새로운 커밋마다 추가 리뷰 실행 여부
+
+    drafts: false  # Draft PR도 자동 리뷰 포함 여부
+
+    base_branches:  # 자동 리뷰 대상 base 브랜치
+      - "develop"
+
+finishing_touches: # 코드 리뷰 마무리 단계에서 해주는 사소한 개선 제안 옵션
+  enabled: true
+  max_comments: 3  # 개수 제한 (노이즈 방지)
+  tone: concise    # 장황하지 않게
+
+chat:
+  auto_reply: false # 사용자가 멘션하지 않아도 자동 응답 여부
+  integrations:
+    jira:
+      usage: disabled  # Jira 연동 모드 설정
+    linear:
+      usage: disabled  # Linear 연동 모드 설정
+
+knowledge_base:
+  opt_out: false  # 지식 기반 기능 옵트아웃 (데이터 미보존 설정)
+  web_search:
+    enabled: false  # 웹 검색 통합 사용 여부
+      
+  learnings:
+    scope: local  # 학습 데이터 범위 ('local'|'global'|'auto')
+  issues:
+    scope: local  # 이슈 데이터 활용 범위 ('local'|'global'|'auto')
+  jira:
+    usage: disabled
+  linear:
+    usage: disabled
+  pull_requests:
+    scope: local  # PR 데이터 활용 범위 ('local'|'global'|'auto')
