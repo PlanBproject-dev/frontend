@@ -152,10 +152,10 @@ reviews:
     base_branches:  # 자동 리뷰 대상 base 브랜치
       - "develop"
 
-finishing_touches: # 코드 리뷰 마무리 단계에서 해주는 사소한 개선 제안 옵션
-  enabled: true
-  max_comments: 3  # 개수 제한 (노이즈 방지)
-  tone: concise    # 장황하지 않게
+  finishing_touches: # 코드 리뷰 마무리 단계에서 해주는 사소한 개선 제안 옵션
+    enabled: true
+    max_comments: 3  # 개수 제한 (노이즈 방지)
+    tone: concise    # 장황하지 않게
 
 chat:
   auto_reply: false # 사용자가 멘션하지 않아도 자동 응답 여부
