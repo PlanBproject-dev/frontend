@@ -165,7 +165,7 @@
     },
     {
       "name": "go_router",
-      "version": "14.8.1",
+      "version": "17.5.0",
       "dependencies": [
         "collection",
         "flutter",
