@@ -1,14 +1,12 @@
-// 폰트, 크기, 굵기, 행간, 자간 정의
+// 텍스트 스타일: 폰트, 크기, 굵기, 행간, 자간 정의
 
 import 'package:flutter/material.dart';
 
 abstract final class AppTextStyles {
-  AppTextStyles._();
-
   /// font family
   static const String _fontFamily = 'Pretendard';
 
-  /// 피그마의 값을 그대로 넣으면 Flutter의 TextStyle로 변환해주는 보조 함수
+  /// Figma의 값을 그대로 넣으면 Flutter의 TextStyle로 변환해주는 보조 함수
   static TextStyle _figma({
     required FontWeight weight,
     required double size,
@@ -19,16 +17,17 @@ abstract final class AppTextStyles {
       fontFamily: _fontFamily,
       fontWeight: weight,
       fontSize: size,
-      height: lineHeight / size,  // height: 폰트 크기에 대한 배수
-      letterSpacing: size * letterSpacingPercent / 100,  // letterSpacing: 폰트 크기 기준으로 논리 픽셀을 계산하여 적용
+      // Figma의 line height(px): 폰트 크기에 대한 배수
+      height: lineHeight / size,
+      // Figma의 letterSpacing(%): 폰트 크기 기준으로 논리 픽셀을 계산하여 적용
+      letterSpacing: size * letterSpacingPercent / 100,
 
-      // 아래와 같이 지정 시 행간이 글자 위아래에 균등하게 나뉨
-      // 피그마와 같은 방식이라 디자인을 더 정확하게 구현 가능
+      // 행간을 글자 위아래에 균등 배분 (Figma와 동일한 방식)
       leadingDistribution: TextLeadingDistribution.even,
     );
   }
 
-  /// Title
+  // Title
   static final TextStyle titleBold24 = _figma(
     weight: FontWeight.w700,
     size: 24,
@@ -94,6 +93,7 @@ abstract final class AppTextStyles {
   
 
   // Body
+
   static final TextStyle bodySemiBold16 = _figma(
     weight: FontWeight.w600,
     size: 16,
