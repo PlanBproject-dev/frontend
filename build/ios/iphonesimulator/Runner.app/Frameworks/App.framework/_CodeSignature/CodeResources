@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		ME0cAg6cl/bTZmwXEVgMugDccUI=
+		C5L1ClqGllsIAKLicJ4M4VQyTeA=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
-		vKJkVIcw+LGHFnKJGwrQwCREv68=
+		Gt45ozbx42oA4brAOzFisq3L3RY=
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
@@ -23,6 +23,22 @@
 		<key>flutter_assets/NativeAssetsManifest.json</key>
 		<data>
 		re4p7E8rPLLsN+wzaPN/+AVpXTY=
+		</data>
+		<key>flutter_assets/assets/fonts/Pretendard-Bold.otf</key>
+		<data>
+		vUrILMJs+TyJz7+7uoglxRmLW5k=
+		</data>
+		<key>flutter_assets/assets/fonts/Pretendard-Medium.otf</key>
+		<data>
+		66GjdzSpxP49hPVAzo2BLTZrKyI=
+		</data>
+		<key>flutter_assets/assets/fonts/Pretendard-Regular.otf</key>
+		<data>
+		4gXvCjFNnaThqTguDmWiWQCprHs=
+		</data>
+		<key>flutter_assets/assets/fonts/Pretendard-SemiBold.otf</key>
+		<data>
+		kWpiFSt/0I/0PSOd4EMDpGVSH+Y=
 		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -59,14 +75,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AK9VrT1vIYmP534P8JLRoc2lLJQbaGDpko1FyK+MCV0=
+			iUyMSwqjEX+aoH4QdWrWWpcSFfr3UwzDSZVpgJDgIKA=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zX4DZFvESy3Ue3y2JvUcTsv1Whl6t3JBYotHrBZfviE=
+			wwq6bG18fAx0Qe/n0HTquCxCcRRpPLfg9gYv6Q5cO1k=
 			</data>
 		</dict>
 		<key>flutter_assets/NOTICES.Z</key>
@@ -81,6 +97,34 @@
 			<key>hash2</key>
 			<data>
 			lUijHkoEgTXB2U+Rkyi/tirix7s8q5ZVfHlB2ql3dss=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Pretendard-Bold.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LpGRX6tU33HMlZjr9giyvbVMb+PAZqxh3/C8RPynHMc=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Pretendard-Medium.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			055Q5LtStJk7ak7rghoXElR0W9gkRGrwHh9ha4n/rOA=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Pretendard-Regular.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			P/us3mq4QR8dLbVLubHws+4qc4kyAzcizwOIwGrtHJM=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/fonts/Pretendard-SemiBold.otf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yJvEMCfcfN5XJuliIzdvjuwJMCsvwfgUf9W1fPw3YRg=
 			</data>
 		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>

@@ -132,6 +132,90 @@ abstract final class AppTextStyles {
 
   // Label
 
+  static final TextStyle labelSemiBold16 = _figma(
+    weight: FontWeight.w600,
+    size: 16,
+    lineHeight: 24,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle labelMedium16 = _figma(
+    weight: FontWeight.w500,
+    size: 16,
+    lineHeight: 24,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle labelRegular16 = _figma(
+    weight: FontWeight.w400,
+    size: 16,
+    lineHeight: 24,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle labelSemiBold14 = _figma(
+    weight: FontWeight.w600,
+    size: 14,
+    lineHeight: 20,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle labelMedium14 = _figma(
+    weight: FontWeight.w500,
+    size: 14,
+    lineHeight: 20,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle labelSemiBold12 = _figma(
+    weight: FontWeight.w600,
+    size: 12,
+    lineHeight: 18,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle labelMedium12 = _figma(
+    weight: FontWeight.w500,
+    size: 12,
+    lineHeight: 18,
+    letterSpacingPercent: -1,
+  );
+
+
   // Caption
 
+  static final TextStyle captionSemiBold14 = _figma(
+    weight: FontWeight.w600,
+    size: 14,
+    lineHeight: 20,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle captionMedium14 = _figma(
+    weight: FontWeight.w500,
+    size: 14,
+    lineHeight: 20,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle captionRegular14 = _figma(
+    weight: FontWeight.w400,
+    size: 14,
+    lineHeight: 20,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle captionMedium12 = _figma(
+    weight: FontWeight.w500,
+    size: 12,
+    lineHeight: 16,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle captionRegular12 = _figma(
+    weight: FontWeight.w400,
+    size: 12,
+    lineHeight: 16,
+    letterSpacingPercent: -1,
+  );
 }
