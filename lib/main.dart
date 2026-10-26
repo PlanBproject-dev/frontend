@@ -4,8 +4,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:plan_b/core/config/router.dart';
 import 'package:plan_b/core/theme/app_theme.dart';
 
-void main() async {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await dotenv.load(fileName: '.env');
+
   runApp(const MyApp());
 }
 
