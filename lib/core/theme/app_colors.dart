@@ -32,6 +32,30 @@ abstract final class AppColors {
 
   // Background
   static const Color bgSolidBasic = Color(0xFFF5F6F8);
+  static const LinearGradient bgGradientTop = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [white, blue50],
+    stops: [0.0, 1.0],
+  );
+  static const LinearGradient bgGradientBottom = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [blue50, white],
+    stops: [0.0, 1.0],
+  );
+  static const LinearGradient bgGradientLeft = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [blue50, white],
+    stops: [0.0, 1.0],
+  );
+  static const LinearGradient bgGradientRight = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [white, blue50],
+    stops: [0.0, 1.0],
+  );
 
   // System
   static const Color systemSuccess = Color(0xFF4FC378);
