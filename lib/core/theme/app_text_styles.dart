@@ -29,7 +29,6 @@ abstract final class AppTextStyles {
   }
 
   /// Title
-
   static final TextStyle titleBold24 = _figma(
     weight: FontWeight.w700,
     size: 24,
@@ -95,6 +94,41 @@ abstract final class AppTextStyles {
   
 
   // Body
+  static final TextStyle bodySemiBold16 = _figma(
+    weight: FontWeight.w600,
+    size: 16,
+    lineHeight: 24,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle bodyMedium16 = _figma(
+    weight: FontWeight.w500,
+    size: 16,
+    lineHeight: 24,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle bodyRegular16 = _figma(
+    weight: FontWeight.w400,
+    size: 16,
+    lineHeight: 24,
+    letterSpacingPercent: -1,
+  );
+
+  static final TextStyle bodySemiBold14 = _figma(
+    weight: FontWeight.w600,
+    size: 14,
+    lineHeight: 22,
+    letterSpacingPercent: -1,
+  );  
+
+  static final TextStyle bodyMedium14 = _figma(
+    weight: FontWeight.w500,
+    size: 14,
+    lineHeight: 22,
+    letterSpacingPercent: -1,
+  );
+
 
   // Label
 
