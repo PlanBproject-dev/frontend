@@ -1,4 +1,4 @@
-// 텍스트 스타일: 폰트, 크기, 굵기, 행간, 자간 정의
+// 텍스트 스타일 정의
 
 import 'package:flutter/material.dart';
 
