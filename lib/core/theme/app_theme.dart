@@ -13,6 +13,9 @@ abstract final class AppTheme {
     // Material 3 사용
     useMaterial3: true,
 
+    // 앱 전체 기본 폰트
+    fontFamily: 'Pretendard',
+
     // 앱 전체 기본 배경색
     scaffoldBackgroundColor: AppColors.white,
 
