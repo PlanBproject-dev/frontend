@@ -11,7 +11,7 @@ abstract final class AppColors {
   static const Color gray50 = Color(0xFFE2E6EA);
   static const Color gray100 = Color(0xFFCAD0D8);
   static const Color gray200 = Color(0xFFB0BAC5);
-  static const Color gray300 = Color.fromARGB(255, 14, 121, 252);
+  static const Color gray300 = Color(0xFF8C9AAB);
   static const Color gray400 = Color(0xFF76869A);
   static const Color gray500 = Color(0xFF546881);
   static const Color gray600 = Color(0xFF4C5F75);
