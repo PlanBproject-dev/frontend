@@ -6,8 +6,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home Page')),
-      body: const Center(child: Text('Welcome to the Home Page')),
+      appBar: AppBar(
+        title: const Text('planB Style Preview'),
+        ),
+      body: const Center(
+        child: Text('Hello, planB!'),
+      ),
     );
   }
 }
