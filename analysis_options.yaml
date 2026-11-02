@@ -26,5 +26,9 @@ linter:
     always_use_package_imports: true
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
 
+formatter:
+  # trailing comma를 유지하여 코드의 가독성 높임
+  trailing_commas: preserve
+
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
