@@ -15,8 +15,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // 내 앱의 root
-  @override
+  // 내 앱의 roots
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'planB',
