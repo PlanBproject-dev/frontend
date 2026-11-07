@@ -22,6 +22,8 @@ enum ToastType {
 }
 
 /// showToast(): 토스트를 화면에 띄운다
+/// 해당 동작은 Flutter에서 제공하는 SnackBar의 틀을 빌려, 그 안에 직접 만든 토스트를 넣는 방식으로 한다
+/// 이유: 위치를 자동으로 맞출 수 있고 + 별도의 상태관리 필요 없이 어느 화면에서는 context만 있으면 바로 띄울 수 있음
 void showToast(
   BuildContext context, {
     required String text,
