@@ -16,12 +16,14 @@ class Cta extends StatelessWidget {
     required this.onPressed,
     this.variant = CtaVariant.primary,
     this.isActive = true,
+    this.isExpanded = true,
   });
 
   final String text;  // cta 버튼 텍스트
   final VoidCallback? onPressed;  // 탭 콜백 (isActive가 false면 호출되지 않음)
   final CtaVariant variant; // primary, secondary
   final bool isActive;  // 활성화, 비활성화 여부
+  final bool isExpanded;  // true: 부모 너비를 꽉 채움 / false: 텍스트 너비 + 좌우 패딩만큼만 차지
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +51,8 @@ class Cta extends StatelessWidget {
       };
 
       return SizedBox(
-        width: double.infinity,
-        height: 54,
+        width: isExpanded ? double.infinity : null, // true: 부모 너비를 꽉 채움 / false: 텍스트 너비 + 좌우 패딩만큼만 차지
+        height: 54, // 고정값 54
 
         child: Material(
           color: background,
