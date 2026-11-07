@@ -1,8 +1,6 @@
-/**
- * app_page.dart
- * - 앱 공통 페이지 틀
- * - 기본 좌우 24px 패딩 적용 + safe area
- */
+// app_page.dart
+// - 앱 공통 페이지 틀
+// - 기본 좌우 24px 패딩 적용 + safe area
 
 import 'package:flutter/material.dart';
 
