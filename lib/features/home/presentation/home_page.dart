@@ -6,8 +6,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppPage(
-      body: const Center(child: Text('Hello, planB!')),
+    return const AppPage(
+      body: Center(child: Text('Hello, planB!')),
     );
   }
 }

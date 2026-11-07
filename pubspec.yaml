@@ -28,6 +28,7 @@ dependencies:
   json_annotation: ^4.9.0
 
   cupertino_icons: ^1.0.8
+  flutter_svg: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -43,6 +44,7 @@ dev_dependencies:
 flutter:
   assets:
     - .env
+    - assets/icons/
 
   uses-material-design: true
 
