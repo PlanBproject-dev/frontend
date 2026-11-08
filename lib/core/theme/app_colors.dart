@@ -64,6 +64,6 @@ abstract final class AppColors {
 
   /// Dim
   static const Color dimSurfaceDark = Color(0xE63C4A5C);
-  static const Color dimSurfaceLight = Color(0xB3FFFFFF);
+  static const Color dimSurfaceLight = Color(0xCCEEF5FD);
   static const Color dimBackdrop = Color(0x4D111111);   // 모달 뒤 배경 딤
 }
