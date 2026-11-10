@@ -22,7 +22,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     navigatorKey: _rootNavigatorKey,
 
     // TODO
-    // 나중에 로그인 연동할 때 스플래스로 바꾸고 로그인 상태에 따른 redirect 추가 필요함
+    // 나중에 로그인 연동할 때 스플래시로 바꾸고 로그인 상태에 따른 redirect 추가 필요함
     initialLocation: AppRoutes.home,
 
     // '/'로 들어오면 홈으로 리다이렉트
