@@ -27,9 +27,6 @@ class LocalTab extends StatefulWidget {
 class _LocalTabState extends State<LocalTab> {
   static const double _iconSize = 24;   // 탭 아이콘 사이즈: 24
 
-  // 활성 배경 전환 모션
-  static const Duration _bgDuration = Duration(milliseconds: 200);
-
   // 눌림 피드백 값 (GlobalTab과 동일)
   static const double _pressedOpacity = 0.5;
   static const double _pressedScale = 0.94;
@@ -60,17 +57,8 @@ class _LocalTabState extends State<LocalTab> {
         onTap: widget.onTap,
 
         // 활성 배경: 흰색 캡슐이 부드럽게 나타나고 사라짐
-        child: AnimatedContainer(
-          duration: _bgDuration,
-          curve: Curves.easeInOut,
+        child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 6),
-          decoration: BoxDecoration(
-            // 투명도만 바뀌도록 같은 흰색의 알파값으로 전환
-            color: widget.isActive
-              ? AppColors.white
-              : AppColors.white.withValues(alpha: 0),
-            borderRadius: BorderRadius.circular(999),
-          ),
 
           // 눌림 피드백: 아이콘, 텍스트에만 적용
           child: AnimatedOpacity(
