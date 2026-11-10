@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plan_b/core/theme/app_colors.dart';
 import 'package:plan_b/core/theme/app_text_styles.dart';
 import 'package:plan_b/core/theme/app_effects.dart';
-import 'package:plan_b/shared/widgets/cta_binary.dart';
+import 'package:plan_b/shared/widgets/btn/cta_binary.dart';
 
 /// 모달을 띄우고, 어떤 버튼을 눌렀는지 결과로 돌려줌
 /// true: 확인(primary) / false: 돌아가기(secondary)

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:plan_b/shared/widgets/cta.dart';
+import 'package:plan_b/shared/widgets/btn/cta.dart';
 
 class CtaBinary extends StatelessWidget {
   const CtaBinary({
