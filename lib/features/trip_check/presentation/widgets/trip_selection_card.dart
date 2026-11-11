@@ -3,13 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:plan_b/core/theme/app_colors.dart';
 import 'package:plan_b/core/theme/app_text_styles.dart';
+import 'package:plan_b/features/trip_check/data/models/trip_selection_type.dart';
 import 'package:plan_b/shared/widgets/btn/btn_check.dart';
-
-/// 여행 플랜 기준 선택 카드의 종류
-enum TripSelectionType {
-  budget, // 내 지갑 기준
-  goal,  // 여행 목표 기준
-}
 
 class TripSelectionCard extends StatelessWidget {
   const TripSelectionCard({
