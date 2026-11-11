@@ -22,7 +22,7 @@ class BtnCheck extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: SvgPicture.asset(
-        'assets/icons/ic_check_24px.svg',
+        'assets/icons/ic_check_24px_white.svg',
         width: 24,
         height: 24,
       ),

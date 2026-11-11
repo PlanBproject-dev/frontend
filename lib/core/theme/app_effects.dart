@@ -3,6 +3,7 @@
 import 'dart:ui' show ImageFilter;
 
 import 'package:flutter/material.dart';
+import 'package:plan_b/core/theme/app_colors.dart';
 
 abstract final class AppEffects {
   /// box_shadow_sm
@@ -31,6 +32,17 @@ abstract final class AppEffects {
       blurRadius: 30,
     ),
   ];
+
+  /// box_shadow_highlight
+  static final List<BoxShadow> boxShadowHighlight = [
+  BoxShadow(
+    color: AppColors.blue400.withValues(alpha: 0.5),
+    offset: const Offset(0, 2),
+    blurRadius: 24,
+    spreadRadius: 2,
+  ),
+];
+  
 
   /// box_dimmed_light_lg: box_shadow_lg + background blur 20
   /// 그림자와 배경 블러를 플러터에서는 따로 적용해야 해서 두 값으로 나눔
