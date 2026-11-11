@@ -57,6 +57,15 @@ abstract final class AppColors {
     stops: [0.0, 1.0],
   );
 
+  /// Surface
+  static const LinearGradient surfaceGradientHighlight = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [Color(0x00C7F8F5), Color(0x99C7F8F5)],
+    stops: [0.0, 1.0],
+  );
+  
+
   /// System
   static const Color systemSuccess = Color(0xFF4FC378);
   static const Color systemAlert = Color(0xFFFFC84D);
@@ -66,4 +75,10 @@ abstract final class AppColors {
   static const Color dimSurfaceDark = Color(0xE63C4A5C);
   static const Color dimSurfaceLight = Color(0xCCEEF5FD);
   static const Color dimBackdrop = Color(0x4D111111);   // 모달 뒤 배경 딤
+
+  /// Highlight
+  static const Color highlightPrimary = Color(0xFFC7F8F5);
+
+  /// Alpha
+  static const Color white75 = Color(0xBFFFFFFF);
 }
