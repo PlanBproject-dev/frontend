@@ -13,7 +13,7 @@ class ComboBoxDropdown extends StatelessWidget {
     required this.items,
     required this.selected,
     required this.onSelect,
-    this.scrollController,
+    required this.scrollController,
     this.maxListHeight = defaultMaxListHeight,
   });
 
@@ -33,7 +33,7 @@ class ComboBoxDropdown extends StatelessWidget {
   final List<String> items;                   // 표시할 항목
   final String? selected;                     // 현재 선택된 값 (배경 강조)
   final ValueChanged<String> onSelect;        // 항목 탭
-  final ScrollController? scrollController;   // 열 때 선택 위치로 스크롤하기 위함
+  final ScrollController scrollController; // 열 때 선택 위치로 스크롤 + 스크롤바 연결
   final double maxListHeight;                 // 목록 최대 높이 (공간이 부족하면 줄어듦)
 
   @override

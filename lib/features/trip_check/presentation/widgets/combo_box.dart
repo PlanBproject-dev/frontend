@@ -125,6 +125,37 @@ class _ComboBoxState extends State<ComboBox> {
     widget.onSelected?.call(item);
   }
 
+  /// 완료 키: 확정할 수 있는 항목이 하나로 정해지면 선택
+  void _onSubmitted(String text) {
+    final query = _normalize(text);
+
+    // 1. 항목 이름과 정확히 일치
+    for (final item in widget.items) {
+      if (_normalize(item) == query) {
+        _select(item);
+        return;
+      }
+    }
+
+    final matches = query.isEmpty
+        ? widget.items
+        : widget.items.where((item) => _normalize(item).contains(query)).toList();
+
+    // 2. 맞는 항목이 하나뿐
+    if (matches.length == 1) {
+      _select(matches.single);
+      return;
+    }
+
+    // 3. 맞는 항목이 없으면 닫고 이전 선택값으로 되돌림
+    if (matches.isEmpty) {
+      _close();
+      return;
+    }
+
+    // 4. 여러 개면 키보드만 내려가고 목록은 열린 채로 둬서 탭으로 고르게 함
+  }
+
   @override
   Widget build(BuildContext context) {
     final bool isOpen = _overlay.isShowing;
@@ -148,6 +179,7 @@ class _ComboBoxState extends State<ComboBox> {
               groupId: _tapGroup,   // 드롭다운 탭을 바깥 탭으로 보지 않도록
               onTapOutside: (_) {}, // 바깥 탭 처리는 아래 TapRegion에서 한 번에
               onChanged: _onChanged,
+              onSubmitted: _onSubmitted,
               textInputAction: TextInputAction.done,
               style: AppTextStyles.labelMedium16.copyWith(color: AppColors.black),
               cursorColor: AppColors.gray600,
