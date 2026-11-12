@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plan_b/core/theme/app_colors.dart';
 import 'package:plan_b/core/theme/app_effects.dart';
 import 'package:plan_b/core/theme/app_text_styles.dart';
-import 'package:plan_b/features/trip_check/presentation/widgets/month_calendar.dart';
+import 'package:plan_b/features/trip_check/presentation/widgets/day_picker/month_calendar.dart';
 
 /// 여행 시기 선택 필드
 /// - 날짜 텍스트 필드, 드롭다운 열고닫는 기능, 여행 시기 선택 로직만 담당.

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:plan_b/core/theme/app_colors.dart';
 import 'package:plan_b/core/theme/app_text_styles.dart';
-import 'package:plan_b/features/trip_check/presentation/widgets/calendar_day_cell.dart';
+import 'package:plan_b/features/trip_check/presentation/widgets/day_picker/calendar_day_cell.dart';
 
 /// 드롭다운 안의 월별 캘린더
 class MonthCalendar extends StatelessWidget {

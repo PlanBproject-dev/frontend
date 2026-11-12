@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:plan_b/core/theme/app_colors.dart';
 import 'package:plan_b/core/theme/app_text_styles.dart';
-import 'package:plan_b/features/trip_check/presentation/widgets/combo_box_dropdown.dart';
+import 'package:plan_b/features/trip_check/presentation/widgets/combo_box/combo_box_dropdown.dart';
 
 /// 콤보박스: 입력창 + 드롭다운
 class ComboBox extends StatefulWidget {
