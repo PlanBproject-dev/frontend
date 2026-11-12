@@ -51,7 +51,8 @@ class ComboBoxDropdown extends StatelessWidget {
         constraints: BoxConstraints(maxHeight: maxListHeight),
         child: Scrollbar(
           controller: scrollController,
-          thumbVisibility: items.length > maxVisibleItems, // 4개를 넘을 때만 항상 표시
+          // 항목 전체 높이가 목록 최대 높이를 넘어 실제로 잘릴 때만 항상 표시
+          thumbVisibility: items.length * itemHeight > maxListHeight,
           child: ListView.builder(
             controller: scrollController,
             padding: EdgeInsets.zero,
