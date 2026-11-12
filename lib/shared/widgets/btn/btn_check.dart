@@ -8,17 +8,19 @@ class BtnCheck extends StatelessWidget {
     super.key,
     required this.isSelected,
     this.onChanged,
+    this.selectedColor = AppColors.blue500  // 선택 색을 바꿀 수 있게
   });
 
   final bool isSelected; // 선택 여부
   final ValueChanged<bool>? onChanged; // 탭하면 반대 값을 전달. null이면 표시 전용(탭 불가)
+  final Color selectedColor;  // 선택 시 배경색 (기본 blue500)
 
   @override
   Widget build(BuildContext context) {
     final circle = Container(
       padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
-        color: isSelected ? AppColors.blue500 : AppColors.gray50,
+        color: isSelected ? selectedColor : AppColors.gray50,
         shape: BoxShape.circle,
       ),
       child: SvgPicture.asset(

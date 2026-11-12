@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:plan_b/core/theme/app_colors.dart';
 
-/// 여행 플랜 티켓의 선택 여부에 따른 색상/에셋/간격 묶음
-class TicketPalette {
-  const TicketPalette._({
+/// 여행 플랜 카드(티켓·영수증)의 선택 여부에 따른 색상/에셋/간격 묶음
+class PlanCardPalette {
+  const PlanCardPalette._({
     required this.headerBg,
     required this.badgeBg,
     required this.badgeText,
@@ -59,9 +59,9 @@ class TicketPalette {
   final Color footerText;
   final String chevronAsset;
 
-  static TicketPalette of(bool selected) => selected ? _selected : _default;
+  static PlanCardPalette of(bool selected) => selected ? _selected : _default;
 
-  static const TicketPalette _default = TicketPalette._(
+  static const PlanCardPalette _default = PlanCardPalette._(
     headerBg: AppColors.bgSolidBasic,
     badgeBg: AppColors.gray50,
     badgeText: AppColors.gray500,
@@ -87,7 +87,7 @@ class TicketPalette {
     chevronAsset: 'assets/icons/ic_chevron_right_16px_blue.svg',
   );
 
-  static const TicketPalette _selected = TicketPalette._(
+  static const PlanCardPalette _selected = PlanCardPalette._(
     headerBg: AppColors.blue400,
     badgeBg: AppColors.blue500,
     badgeText: AppColors.blue100,

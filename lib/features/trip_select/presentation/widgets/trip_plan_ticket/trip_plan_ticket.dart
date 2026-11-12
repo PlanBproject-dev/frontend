@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:plan_b/core/theme/app_effects.dart';
 import 'package:plan_b/features/trip_select/data/models/trip_plan.dart';
+import 'package:plan_b/features/trip_select/presentation/widgets/shared/plan_card_footer.dart';
+import 'package:plan_b/features/trip_select/presentation/widgets/shared/plan_card_palette.dart';
+import 'package:plan_b/features/trip_select/presentation/widgets/shared/plan_highlight_ellipse.dart';
 import 'package:plan_b/features/trip_select/presentation/widgets/trip_plan_ticket/ticket_body.dart';
-import 'package:plan_b/features/trip_select/presentation/widgets/trip_plan_ticket/ticket_footer.dart';
 import 'package:plan_b/features/trip_select/presentation/widgets/trip_plan_ticket/ticket_header.dart';
-import 'package:plan_b/features/trip_select/presentation/widgets/trip_plan_ticket/ticket_palette.dart';
 
 class TripPlanTicket extends StatefulWidget {
   const TripPlanTicket({
@@ -48,7 +48,7 @@ class _TripPlanTicketState extends State<TripPlanTicket> {
   @override
   Widget build(BuildContext context) {
     final bool selected = widget.isSelected;
-    final TicketPalette palette = TicketPalette.of(selected);
+    final PlanCardPalette palette = PlanCardPalette.of(selected);
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -76,7 +76,7 @@ class _TripPlanTicketState extends State<TripPlanTicket> {
                     TicketBody(plan: widget.plan, isOpen: _isOpen, palette: palette),
                   ],
                 ),
-                if (selected) const _HighlightEllipse(),
+                if (selected) const PlanHighlightEllipse(),
               ],
             ),
           ),
@@ -86,32 +86,12 @@ class _TripPlanTicketState extends State<TripPlanTicket> {
             borderRadius: _bottomRadius,
             child: Stack(
               children: [
-                TicketFooter(isOpen: _isOpen, palette: palette, onTap: _toggleOpen),
-                if (selected && !_isOpen) const _HighlightEllipse(),
+                PlanCardFooter(isOpen: _isOpen, palette: palette, onTap: _toggleOpen),
+                if (selected && !_isOpen) const PlanHighlightEllipse(),
               ],
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-/// 선택 시 좌상단 하이라이트 ellipse (상단&하단 공용, 각 영역의 좌상단 기준 고정 위치)
-class _HighlightEllipse extends StatelessWidget {
-  const _HighlightEllipse();
-
-  static const String _asset = 'assets/backgrounds/bg_ticket_ellipse.svg';
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      left: -296,
-      top: -167,
-      width: 594,
-      height: 580,
-      child: IgnorePointer(
-        child: SvgPicture.asset(_asset, fit: BoxFit.fill),
       ),
     );
   }

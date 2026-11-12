@@ -3,8 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:plan_b/core/theme/app_text_styles.dart';
 import 'package:plan_b/features/trip_select/data/models/trip_plan.dart';
-import 'package:plan_b/features/trip_select/presentation/widgets/trip_plan_ticket/ticket_cost_section.dart';
-import 'package:plan_b/features/trip_select/presentation/widgets/trip_plan_ticket/ticket_palette.dart';
+import 'package:plan_b/features/trip_select/presentation/widgets/shared/plan_card_palette.dart';
+import 'package:plan_b/features/trip_select/presentation/widgets/shared/plan_cost_section.dart';
+import 'package:plan_b/features/trip_select/presentation/widgets/shared/plan_summary_box.dart';
+import 'package:plan_b/features/trip_select/presentation/widgets/shared/plan_tags.dart';
 
 /// 본문: 닫힘(태그) / 열림(플랜 요약) + 우측 상단 가격 스티커
 class TicketBody extends StatelessWidget {
@@ -17,7 +19,7 @@ class TicketBody extends StatelessWidget {
 
   final TripPlan plan;
   final bool isOpen;
-  final TicketPalette palette;
+  final PlanCardPalette palette;
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +47,10 @@ class _ClosedContent extends StatelessWidget {
   const _ClosedContent({required this.tags, required this.palette});
 
   final List<String> tags;
-  final TicketPalette palette;
+  final PlanCardPalette palette;
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle style = AppTextStyles.labelMedium16.copyWith(color: palette.tag);
-
     return SizedBox(
       width: double.infinity,
       height: 96,
@@ -61,24 +61,10 @@ class _ClosedContent extends StatelessWidget {
           child: ClipRect(
             child: SizedBox(
               width: 160,
-              child: Wrap(
-                spacing: 8,
-                runSpacing: 2,
-                children: [
-                  for (final tag in tags)
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text('#', style: style),
-                        const SizedBox(width: 2),
-                        Text(tag, style: style),
-                      ],
-                    ),
-                ],
-              ),
-            ),
-          ),
-        ),
+              child: PlanTags(tags: tags, color: palette.tag),
+            )
+          )
+        )
       ),
     );
   }
@@ -89,7 +75,7 @@ class _OpenContent extends StatelessWidget {
   const _OpenContent({required this.plan, required this.palette});
 
   final TripPlan plan;
-  final TicketPalette palette;
+  final PlanCardPalette palette;
 
   @override
   Widget build(BuildContext context) {
@@ -108,13 +94,13 @@ class _OpenContent extends StatelessWidget {
               _SummaryTitle(palette: p),
 
               // 주요 일정
-              TicketDashedSection(
+              PlanDashedSection(
                 color: p.dashed,
                 spacing: 6,
                 children: [
                   for (final item in plan.highlights)
-                    TicketCostRow(
-                      leading: TicketBulletDot(asset: p.dotAsset),
+                    PlanCostRow(
+                      leading: PlanBulletDot(asset: p.dotAsset),
                       item: item,
                       palette: p,
                     ),
@@ -122,19 +108,19 @@ class _OpenContent extends StatelessWidget {
               ),
 
               // 숙소 / 항공
-              TicketDashedSection(
+              PlanDashedSection(
                 color: p.dashed,
                 spacing: 8,
                 children: [
-                  TicketCostRow.labeled(label: '숙소', item: plan.accommodation, palette: p),
-                  TicketCostRow.labeled(label: '항공', item: plan.flight, palette: p),
+                  PlanCostRow.labeled(label: '숙소', item: plan.accommodation, palette: p),
+                  PlanCostRow.labeled(label: '항공', item: plan.flight, palette: p),
                 ],
               ),
 
               _TotalCostRow(totalCost: plan.totalCost, palette: p),
             ],
           ),
-          _SummaryBox(summary: plan.summary, palette: p),
+          PlanSummaryBox(summary: plan.summary, palette: p),
         ],
       ),
     );
@@ -145,7 +131,7 @@ class _OpenContent extends StatelessWidget {
 class _SummaryTitle extends StatelessWidget {
   const _SummaryTitle({required this.palette});
 
-  final TicketPalette palette;
+  final PlanCardPalette palette;
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +154,7 @@ class _TotalCostRow extends StatelessWidget {
   const _TotalCostRow({required this.totalCost, required this.palette});
 
   final String totalCost;
-  final TicketPalette palette;
+  final PlanCardPalette palette;
 
   @override
   Widget build(BuildContext context) {
@@ -187,30 +173,6 @@ class _TotalCostRow extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-/// 한 줄 요약 박스
-class _SummaryBox extends StatelessWidget {
-  const _SummaryBox({required this.summary, required this.palette});
-
-  final String summary;
-  final TicketPalette palette;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        color: palette.summaryBoxBg,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Text(
-        summary,
-        textAlign: TextAlign.center,
-        style: AppTextStyles.bodyMedium16.copyWith(color: palette.summaryBoxText),
-      ),
     );
   }
 }

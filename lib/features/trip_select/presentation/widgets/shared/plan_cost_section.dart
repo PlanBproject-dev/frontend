@@ -3,19 +3,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:plan_b/core/theme/app_text_styles.dart';
 import 'package:plan_b/features/trip_select/data/models/trip_plan.dart';
-import 'package:plan_b/features/trip_select/presentation/widgets/trip_plan_ticket/ticket_palette.dart';
-import 'package:plan_b/features/trip_select/presentation/widgets/trip_plan_ticket/dashed_line.dart';
+import 'package:plan_b/features/trip_select/presentation/widgets/shared/plan_card_palette.dart';
+import 'package:plan_b/shared/widgets/divider/dashed_line.dart';
 
 /// 항목명 + 비용 한 줄 (항목명이 길면 줄바꿈, 비용은 첫 줄에 고정)
-class TicketCostRow extends StatelessWidget {
-  const TicketCostRow({
+class PlanCostRow extends StatelessWidget {
+  const PlanCostRow({
     super.key,
     required this.leading,
     required this.item,
     required this.palette,
   });
 
-  TicketCostRow.labeled({
+  PlanCostRow.labeled({
     super.key,
     required String label,
     required this.item,
@@ -27,7 +27,7 @@ class TicketCostRow extends StatelessWidget {
 
   final Widget leading;
   final TripPlanCostItem item;
-  final TicketPalette palette;
+  final PlanCardPalette palette;
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +59,8 @@ class TicketCostRow extends StatelessWidget {
 }
 
 /// 주요 일정 앞의 점
-class TicketBulletDot extends StatelessWidget {
-  const TicketBulletDot({super.key, required this.asset});
+class PlanBulletDot extends StatelessWidget {
+  const PlanBulletDot({super.key, required this.asset});
 
   final String asset;
 
@@ -77,8 +77,8 @@ class TicketBulletDot extends StatelessWidget {
 }
 
 /// 하단에 점선이 있는 섹션
-class TicketDashedSection extends StatelessWidget {
-  const TicketDashedSection({
+class PlanDashedSection extends StatelessWidget {
+  const PlanDashedSection({
     super.key,
     required this.color,
     required this.spacing,
