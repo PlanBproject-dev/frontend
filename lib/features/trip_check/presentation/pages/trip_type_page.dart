@@ -26,7 +26,7 @@ class TripTypePage extends ConsumerWidget {
       tripCheckDraftProvider.select((draft) => draft.tripType),
     );
 
-    void _onNext() {
+    void onNext() {
       if (selected == null) return;
 
       // 선택한 기준에 따라 플로우 분기 (단계 이동은 push로 쌓음)
@@ -59,7 +59,7 @@ class TripTypePage extends ConsumerWidget {
         child: Cta(
           text: '다음',
           isActive: selected != null,
-          onPressed: _onNext,
+          onPressed: onNext,
         ),
       ),
     );
