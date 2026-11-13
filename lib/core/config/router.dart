@@ -18,6 +18,7 @@ import 'package:plan_b/features/trip_check/presentation/pages/budget_first_basic
 import 'package:plan_b/features/trip_check/presentation/pages/budget_first_budget_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/budget_first_details_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/goal_first_basic_info_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/goal_first_details_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_check_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_type_page.dart';
 
@@ -160,7 +161,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: AppPaths.goalFirstDetails,
-            builder: (context, state) => const TodoPage('목표 기준 · 세부 취향'),
+            builder: (context, state) => const GoalFirstDetailsPage(),
           ),
           GoRoute(
             path: AppPaths.goalFirstFoodBudget,
