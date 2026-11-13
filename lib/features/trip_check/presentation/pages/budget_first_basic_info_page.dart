@@ -45,11 +45,7 @@ class _BudgetFirstBasicInfoPageState
     _peopleController = TextEditingController(text: peopleCount?.toString() ?? '');
 
     // 이전 화면에서 '다음'을 눌러 넘어왔을 때 선택한 기준 안내
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      showToast(context, text: '내 지갑을 기준으로 선택했어요');
-    });
-
+    // (여행 고르기에서 조건 재선택으로 돌아온 경우는 생략)
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || !widget.showGuideToast) return;
       showToast(context, text: '내 지갑을 기준으로 선택했어요');
