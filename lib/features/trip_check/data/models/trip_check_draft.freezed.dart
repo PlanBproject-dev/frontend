@@ -30,7 +30,10 @@ mixin _$TripCheckDraft {
       throw _privateConstructorUsedError; // 여행 구성원 유형
   // 지갑 기준 플로우
   BudgetRange? get maxBudget => throw _privateConstructorUsedError; // 1인당 최대 예산
-  // 세부 취향 (선택한 순서 유지)
+  // 목표 기준 플로우
+  MealBudget? get mealBudget =>
+      throw _privateConstructorUsedError; // 1인당 한 끼 식사 예산
+  // 세부 취향
   Set<TravelStyle> get travelStyles => throw _privateConstructorUsedError;
   Set<AccommodationType> get accommodationTypes =>
       throw _privateConstructorUsedError;
@@ -58,6 +61,7 @@ abstract class $TripCheckDraftCopyWith<$Res> {
     int? peopleCount,
     CompanionType? companionType,
     BudgetRange? maxBudget,
+    MealBudget? mealBudget,
     Set<TravelStyle> travelStyles,
     Set<AccommodationType> accommodationTypes,
     Map<FlightPreference, SegmentedChipSide> flightPreferences,
@@ -85,6 +89,7 @@ class _$TripCheckDraftCopyWithImpl<$Res, $Val extends TripCheckDraft>
     Object? peopleCount = freezed,
     Object? companionType = freezed,
     Object? maxBudget = freezed,
+    Object? mealBudget = freezed,
     Object? travelStyles = null,
     Object? accommodationTypes = null,
     Object? flightPreferences = null,
@@ -115,6 +120,10 @@ class _$TripCheckDraftCopyWithImpl<$Res, $Val extends TripCheckDraft>
                 ? _value.maxBudget
                 : maxBudget // ignore: cast_nullable_to_non_nullable
                       as BudgetRange?,
+            mealBudget: freezed == mealBudget
+                ? _value.mealBudget
+                : mealBudget // ignore: cast_nullable_to_non_nullable
+                      as MealBudget?,
             travelStyles: null == travelStyles
                 ? _value.travelStyles
                 : travelStyles // ignore: cast_nullable_to_non_nullable
@@ -149,6 +158,7 @@ abstract class _$$TripCheckDraftImplCopyWith<$Res>
     int? peopleCount,
     CompanionType? companionType,
     BudgetRange? maxBudget,
+    MealBudget? mealBudget,
     Set<TravelStyle> travelStyles,
     Set<AccommodationType> accommodationTypes,
     Map<FlightPreference, SegmentedChipSide> flightPreferences,
@@ -175,6 +185,7 @@ class __$$TripCheckDraftImplCopyWithImpl<$Res>
     Object? peopleCount = freezed,
     Object? companionType = freezed,
     Object? maxBudget = freezed,
+    Object? mealBudget = freezed,
     Object? travelStyles = null,
     Object? accommodationTypes = null,
     Object? flightPreferences = null,
@@ -205,6 +216,10 @@ class __$$TripCheckDraftImplCopyWithImpl<$Res>
             ? _value.maxBudget
             : maxBudget // ignore: cast_nullable_to_non_nullable
                   as BudgetRange?,
+        mealBudget: freezed == mealBudget
+            ? _value.mealBudget
+            : mealBudget // ignore: cast_nullable_to_non_nullable
+                  as MealBudget?,
         travelStyles: null == travelStyles
             ? _value._travelStyles
             : travelStyles // ignore: cast_nullable_to_non_nullable
@@ -232,6 +247,7 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
     this.peopleCount,
     this.companionType,
     this.maxBudget,
+    this.mealBudget,
     final Set<TravelStyle> travelStyles = const <TravelStyle>{},
     final Set<AccommodationType> accommodationTypes =
         const <AccommodationType>{},
@@ -261,10 +277,14 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
   @override
   final BudgetRange? maxBudget;
   // 1인당 최대 예산
-  // 세부 취향 (선택한 순서 유지)
+  // 목표 기준 플로우
+  @override
+  final MealBudget? mealBudget;
+  // 1인당 한 끼 식사 예산
+  // 세부 취향
   final Set<TravelStyle> _travelStyles;
-  // 1인당 최대 예산
-  // 세부 취향 (선택한 순서 유지)
+  // 1인당 한 끼 식사 예산
+  // 세부 취향
   @override
   @JsonKey()
   Set<TravelStyle> get travelStyles {
@@ -295,7 +315,7 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
 
   @override
   String toString() {
-    return 'TripCheckDraft(tripType: $tripType, destination: $destination, travelPeriod: $travelPeriod, peopleCount: $peopleCount, companionType: $companionType, maxBudget: $maxBudget, travelStyles: $travelStyles, accommodationTypes: $accommodationTypes, flightPreferences: $flightPreferences)';
+    return 'TripCheckDraft(tripType: $tripType, destination: $destination, travelPeriod: $travelPeriod, peopleCount: $peopleCount, companionType: $companionType, maxBudget: $maxBudget, mealBudget: $mealBudget, travelStyles: $travelStyles, accommodationTypes: $accommodationTypes, flightPreferences: $flightPreferences)';
   }
 
   @override
@@ -315,6 +335,8 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
                 other.companionType == companionType) &&
             (identical(other.maxBudget, maxBudget) ||
                 other.maxBudget == maxBudget) &&
+            (identical(other.mealBudget, mealBudget) ||
+                other.mealBudget == mealBudget) &&
             const DeepCollectionEquality().equals(
               other._travelStyles,
               _travelStyles,
@@ -338,6 +360,7 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
     peopleCount,
     companionType,
     maxBudget,
+    mealBudget,
     const DeepCollectionEquality().hash(_travelStyles),
     const DeepCollectionEquality().hash(_accommodationTypes),
     const DeepCollectionEquality().hash(_flightPreferences),
@@ -363,6 +386,7 @@ abstract class _TripCheckDraft implements TripCheckDraft {
     final int? peopleCount,
     final CompanionType? companionType,
     final BudgetRange? maxBudget,
+    final MealBudget? mealBudget,
     final Set<TravelStyle> travelStyles,
     final Set<AccommodationType> accommodationTypes,
     final Map<FlightPreference, SegmentedChipSide> flightPreferences,
@@ -382,7 +406,10 @@ abstract class _TripCheckDraft implements TripCheckDraft {
   // 지갑 기준 플로우
   @override
   BudgetRange? get maxBudget; // 1인당 최대 예산
-  // 세부 취향 (선택한 순서 유지)
+  // 목표 기준 플로우
+  @override
+  MealBudget? get mealBudget; // 1인당 한 끼 식사 예산
+  // 세부 취향
   @override
   Set<TravelStyle> get travelStyles;
   @override

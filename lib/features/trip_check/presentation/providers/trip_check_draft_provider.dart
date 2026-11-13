@@ -11,6 +11,7 @@ import 'package:plan_b/features/trip_check/data/models/budget_range.dart';
 import 'package:plan_b/features/trip_check/data/models/travel_style.dart';
 import 'package:plan_b/features/trip_check/data/models/accommodation_type.dart';
 import 'package:plan_b/features/trip_check/data/models/flight_preference.dart';
+import 'package:plan_b/features/trip_check/data/models/meal_budget.dart';
 import 'package:plan_b/features/trip_check/presentation/widgets/segmented_chip.dart';
 
 class TripCheckDraftNotifier extends Notifier<TripCheckDraft> {
@@ -47,6 +48,11 @@ class TripCheckDraftNotifier extends Notifier<TripCheckDraft> {
 
   void setMaxBudget(BudgetRange budget) =>
       state = state.copyWith(maxBudget: budget);
+
+  // 목표 기준 플로우
+
+  void setMealBudget(MealBudget budget) =>
+      state = state.copyWith(mealBudget: budget);
 
   // 세부 취향
 
