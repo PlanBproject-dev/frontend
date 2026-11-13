@@ -19,6 +19,7 @@ class TripCheckDraft with _$TripCheckDraft {
     TripSelectionType? tripType, // Step 1 여행 계획 기준 (null이면 미선택)
 
     // 기본 정보
+    String? destination,             // 여행지 (목표 기준 플로우만 사용)
     DateTimeRange? travelPeriod,     // 여행 가능 시기 (시작일만 고르면 시작일 = 종료일)
     int? peopleCount,                // 여행 인원 (비어 있으면 null)
     CompanionType? companionType,    // 여행 구성원 유형

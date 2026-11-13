@@ -29,6 +29,10 @@ class TripCheckDraftNotifier extends Notifier<TripCheckDraft> {
 
   // 기본 정보
 
+  // 여행지: 목표 기준 플로우에서만 사용
+  void setDestination(String destination) =>
+      state = state.copyWith(destination: destination);
+
   void setTravelPeriod(DateTimeRange period) =>
       state = state.copyWith(travelPeriod: period);
 

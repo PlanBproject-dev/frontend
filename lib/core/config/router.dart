@@ -17,6 +17,7 @@ import 'package:plan_b/core/config/pages/todo_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/budget_first_basic_info_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/budget_first_budget_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/budget_first_details_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/goal_first_basic_info_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_check_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_type_page.dart';
 
@@ -155,7 +156,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: AppPaths.goalFirstBasicInfo,
-            builder: (context, state) => const TodoPage('목표 기준 · 기본 정보'),
+            builder: (context, state) => const GoalFirstBasicInfoPage(),
           ),
           GoRoute(
             path: AppPaths.goalFirstDetails,
