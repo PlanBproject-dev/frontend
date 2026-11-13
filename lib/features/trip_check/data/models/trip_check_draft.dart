@@ -6,6 +6,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:plan_b/features/trip_check/data/models/trip_selection_type.dart';
 import 'package:plan_b/features/trip_check/data/models/companion_type.dart';
 import 'package:plan_b/features/trip_check/data/models/budget_range.dart';
+import 'package:plan_b/features/trip_check/data/models/flight_preference.dart';
+import 'package:plan_b/features/trip_check/data/models/travel_style.dart';
+import 'package:plan_b/features/trip_check/data/models/accommodation_type.dart';
+import 'package:plan_b/features/trip_check/presentation/widgets/segmented_chip.dart';
 
 part 'trip_check_draft.freezed.dart';
 
@@ -21,5 +25,11 @@ class TripCheckDraft with _$TripCheckDraft {
 
     // 지갑 기준 플로우
     BudgetRange? maxBudget,          // 1인당 최대 예산
+
+    // 세부 취향 (선택한 순서 유지)
+    @Default(<TravelStyle>{}) Set<TravelStyle> travelStyles,
+    @Default(<AccommodationType>{}) Set<AccommodationType> accommodationTypes,
+    @Default(<FlightPreference, SegmentedChipSide>{})
+    Map<FlightPreference, SegmentedChipSide> flightPreferences, // 항목별 왼쪽/오른쪽 선택
   }) = _TripCheckDraft;
 }

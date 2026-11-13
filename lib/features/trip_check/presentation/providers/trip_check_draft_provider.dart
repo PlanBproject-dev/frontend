@@ -8,6 +8,10 @@ import 'package:plan_b/features/trip_check/data/models/trip_selection_type.dart'
 import 'package:plan_b/features/trip_check/data/models/trip_check_draft.dart';
 import 'package:plan_b/features/trip_check/data/models/companion_type.dart';
 import 'package:plan_b/features/trip_check/data/models/budget_range.dart';
+import 'package:plan_b/features/trip_check/data/models/travel_style.dart';
+import 'package:plan_b/features/trip_check/data/models/accommodation_type.dart';
+import 'package:plan_b/features/trip_check/data/models/flight_preference.dart';
+import 'package:plan_b/features/trip_check/presentation/widgets/segmented_chip.dart';
 
 class TripCheckDraftNotifier extends Notifier<TripCheckDraft> {
   @override
@@ -39,6 +43,40 @@ class TripCheckDraftNotifier extends Notifier<TripCheckDraft> {
 
   void setMaxBudget(BudgetRange budget) =>
       state = state.copyWith(maxBudget: budget);
+
+  // 세부 취향
+
+  /// 여행 스타일 선택/해제
+  /// 최대 개수를 넘겨 새로 선택하려 하면 바꾸지 않고 false 반환
+  bool toggleTravelStyle(TravelStyle style) {
+    final current = state.travelStyles;
+    if (current.contains(style)) {
+      state = state.copyWith(travelStyles: {...current}..remove(style));
+      return true;
+    }
+    if (current.length >= TravelStyle.maxSelection) return false;
+    state = state.copyWith(travelStyles: {...current, style});
+    return true;
+  }
+
+  /// 숙소 유형 선택/해제
+  /// 최대 개수를 넘겨 새로 선택하려 하면 바꾸지 않고 false 반환
+  bool toggleAccommodationType(AccommodationType type) {
+    final current = state.accommodationTypes;
+    if (current.contains(type)) {
+      state = state.copyWith(accommodationTypes: {...current}..remove(type));
+      return true;
+    }
+    if (current.length >= AccommodationType.maxSelection) return false;
+    state = state.copyWith(accommodationTypes: {...current, type});
+    return true;
+  }
+
+  /// 항공권 유형: 항목별로 왼쪽/오른쪽 선택
+  void setFlightPreference(FlightPreference preference, SegmentedChipSide side) =>
+      state = state.copyWith(
+        flightPreferences: {...state.flightPreferences, preference: side},
+      );
 }
 
 final tripCheckDraftProvider =

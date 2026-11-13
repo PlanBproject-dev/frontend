@@ -27,7 +27,13 @@ mixin _$TripCheckDraft {
   CompanionType? get companionType =>
       throw _privateConstructorUsedError; // 여행 구성원 유형
   // 지갑 기준 플로우
-  BudgetRange? get maxBudget => throw _privateConstructorUsedError;
+  BudgetRange? get maxBudget => throw _privateConstructorUsedError; // 1인당 최대 예산
+  // 세부 취향 (선택한 순서 유지)
+  Set<TravelStyle> get travelStyles => throw _privateConstructorUsedError;
+  Set<AccommodationType> get accommodationTypes =>
+      throw _privateConstructorUsedError;
+  Map<FlightPreference, SegmentedChipSide> get flightPreferences =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of TripCheckDraft
   /// with the given fields replaced by the non-null parameter values.
@@ -49,6 +55,9 @@ abstract class $TripCheckDraftCopyWith<$Res> {
     int? peopleCount,
     CompanionType? companionType,
     BudgetRange? maxBudget,
+    Set<TravelStyle> travelStyles,
+    Set<AccommodationType> accommodationTypes,
+    Map<FlightPreference, SegmentedChipSide> flightPreferences,
   });
 }
 
@@ -72,6 +81,9 @@ class _$TripCheckDraftCopyWithImpl<$Res, $Val extends TripCheckDraft>
     Object? peopleCount = freezed,
     Object? companionType = freezed,
     Object? maxBudget = freezed,
+    Object? travelStyles = null,
+    Object? accommodationTypes = null,
+    Object? flightPreferences = null,
   }) {
     return _then(
       _value.copyWith(
@@ -95,6 +107,18 @@ class _$TripCheckDraftCopyWithImpl<$Res, $Val extends TripCheckDraft>
                 ? _value.maxBudget
                 : maxBudget // ignore: cast_nullable_to_non_nullable
                       as BudgetRange?,
+            travelStyles: null == travelStyles
+                ? _value.travelStyles
+                : travelStyles // ignore: cast_nullable_to_non_nullable
+                      as Set<TravelStyle>,
+            accommodationTypes: null == accommodationTypes
+                ? _value.accommodationTypes
+                : accommodationTypes // ignore: cast_nullable_to_non_nullable
+                      as Set<AccommodationType>,
+            flightPreferences: null == flightPreferences
+                ? _value.flightPreferences
+                : flightPreferences // ignore: cast_nullable_to_non_nullable
+                      as Map<FlightPreference, SegmentedChipSide>,
           )
           as $Val,
     );
@@ -116,6 +140,9 @@ abstract class _$$TripCheckDraftImplCopyWith<$Res>
     int? peopleCount,
     CompanionType? companionType,
     BudgetRange? maxBudget,
+    Set<TravelStyle> travelStyles,
+    Set<AccommodationType> accommodationTypes,
+    Map<FlightPreference, SegmentedChipSide> flightPreferences,
   });
 }
 
@@ -138,6 +165,9 @@ class __$$TripCheckDraftImplCopyWithImpl<$Res>
     Object? peopleCount = freezed,
     Object? companionType = freezed,
     Object? maxBudget = freezed,
+    Object? travelStyles = null,
+    Object? accommodationTypes = null,
+    Object? flightPreferences = null,
   }) {
     return _then(
       _$TripCheckDraftImpl(
@@ -161,6 +191,18 @@ class __$$TripCheckDraftImplCopyWithImpl<$Res>
             ? _value.maxBudget
             : maxBudget // ignore: cast_nullable_to_non_nullable
                   as BudgetRange?,
+        travelStyles: null == travelStyles
+            ? _value._travelStyles
+            : travelStyles // ignore: cast_nullable_to_non_nullable
+                  as Set<TravelStyle>,
+        accommodationTypes: null == accommodationTypes
+            ? _value._accommodationTypes
+            : accommodationTypes // ignore: cast_nullable_to_non_nullable
+                  as Set<AccommodationType>,
+        flightPreferences: null == flightPreferences
+            ? _value._flightPreferences
+            : flightPreferences // ignore: cast_nullable_to_non_nullable
+                  as Map<FlightPreference, SegmentedChipSide>,
       ),
     );
   }
@@ -175,7 +217,14 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
     this.peopleCount,
     this.companionType,
     this.maxBudget,
-  });
+    final Set<TravelStyle> travelStyles = const <TravelStyle>{},
+    final Set<AccommodationType> accommodationTypes =
+        const <AccommodationType>{},
+    final Map<FlightPreference, SegmentedChipSide> flightPreferences =
+        const <FlightPreference, SegmentedChipSide>{},
+  }) : _travelStyles = travelStyles,
+       _accommodationTypes = accommodationTypes,
+       _flightPreferences = flightPreferences;
 
   @override
   final TripSelectionType? tripType;
@@ -193,10 +242,42 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
   // 지갑 기준 플로우
   @override
   final BudgetRange? maxBudget;
+  // 1인당 최대 예산
+  // 세부 취향 (선택한 순서 유지)
+  final Set<TravelStyle> _travelStyles;
+  // 1인당 최대 예산
+  // 세부 취향 (선택한 순서 유지)
+  @override
+  @JsonKey()
+  Set<TravelStyle> get travelStyles {
+    if (_travelStyles is EqualUnmodifiableSetView) return _travelStyles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_travelStyles);
+  }
+
+  final Set<AccommodationType> _accommodationTypes;
+  @override
+  @JsonKey()
+  Set<AccommodationType> get accommodationTypes {
+    if (_accommodationTypes is EqualUnmodifiableSetView)
+      return _accommodationTypes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_accommodationTypes);
+  }
+
+  final Map<FlightPreference, SegmentedChipSide> _flightPreferences;
+  @override
+  @JsonKey()
+  Map<FlightPreference, SegmentedChipSide> get flightPreferences {
+    if (_flightPreferences is EqualUnmodifiableMapView)
+      return _flightPreferences;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_flightPreferences);
+  }
 
   @override
   String toString() {
-    return 'TripCheckDraft(tripType: $tripType, travelPeriod: $travelPeriod, peopleCount: $peopleCount, companionType: $companionType, maxBudget: $maxBudget)';
+    return 'TripCheckDraft(tripType: $tripType, travelPeriod: $travelPeriod, peopleCount: $peopleCount, companionType: $companionType, maxBudget: $maxBudget, travelStyles: $travelStyles, accommodationTypes: $accommodationTypes, flightPreferences: $flightPreferences)';
   }
 
   @override
@@ -213,7 +294,19 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
             (identical(other.companionType, companionType) ||
                 other.companionType == companionType) &&
             (identical(other.maxBudget, maxBudget) ||
-                other.maxBudget == maxBudget));
+                other.maxBudget == maxBudget) &&
+            const DeepCollectionEquality().equals(
+              other._travelStyles,
+              _travelStyles,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._accommodationTypes,
+              _accommodationTypes,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._flightPreferences,
+              _flightPreferences,
+            ));
   }
 
   @override
@@ -224,6 +317,9 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
     peopleCount,
     companionType,
     maxBudget,
+    const DeepCollectionEquality().hash(_travelStyles),
+    const DeepCollectionEquality().hash(_accommodationTypes),
+    const DeepCollectionEquality().hash(_flightPreferences),
   );
 
   /// Create a copy of TripCheckDraft
@@ -245,6 +341,9 @@ abstract class _TripCheckDraft implements TripCheckDraft {
     final int? peopleCount,
     final CompanionType? companionType,
     final BudgetRange? maxBudget,
+    final Set<TravelStyle> travelStyles,
+    final Set<AccommodationType> accommodationTypes,
+    final Map<FlightPreference, SegmentedChipSide> flightPreferences,
   }) = _$TripCheckDraftImpl;
 
   @override
@@ -258,7 +357,14 @@ abstract class _TripCheckDraft implements TripCheckDraft {
   CompanionType? get companionType; // 여행 구성원 유형
   // 지갑 기준 플로우
   @override
-  BudgetRange? get maxBudget;
+  BudgetRange? get maxBudget; // 1인당 최대 예산
+  // 세부 취향 (선택한 순서 유지)
+  @override
+  Set<TravelStyle> get travelStyles;
+  @override
+  Set<AccommodationType> get accommodationTypes;
+  @override
+  Map<FlightPreference, SegmentedChipSide> get flightPreferences;
 
   /// Create a copy of TripCheckDraft
   /// with the given fields replaced by the non-null parameter values.
