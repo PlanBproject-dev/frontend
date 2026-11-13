@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart' show DateTimeRange;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:plan_b/features/trip_check/data/models/companion_type.dart';
 import 'package:plan_b/features/trip_check/data/models/trip_selection_type.dart';
+import 'package:plan_b/features/trip_check/data/models/companion_type.dart';
+import 'package:plan_b/features/trip_check/data/models/budget_range.dart';
 
 part 'trip_check_draft.freezed.dart';
 
@@ -17,5 +18,8 @@ class TripCheckDraft with _$TripCheckDraft {
     DateTimeRange? travelPeriod,     // 여행 가능 시기 (시작일만 고르면 시작일 = 종료일)
     int? peopleCount,                // 여행 인원 (비어 있으면 null)
     CompanionType? companionType,    // 여행 구성원 유형
+
+    // 지갑 기준 플로우
+    BudgetRange? maxBudget,          // 1인당 최대 예산
   }) = _TripCheckDraft;
 }

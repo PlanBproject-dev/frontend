@@ -4,9 +4,10 @@
 import 'package:flutter/material.dart' show DateTimeRange;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:plan_b/features/trip_check/data/models/companion_type.dart';
-import 'package:plan_b/features/trip_check/data/models/trip_check_draft.dart';
 import 'package:plan_b/features/trip_check/data/models/trip_selection_type.dart';
+import 'package:plan_b/features/trip_check/data/models/trip_check_draft.dart';
+import 'package:plan_b/features/trip_check/data/models/companion_type.dart';
+import 'package:plan_b/features/trip_check/data/models/budget_range.dart';
 
 class TripCheckDraftNotifier extends Notifier<TripCheckDraft> {
   @override
@@ -33,6 +34,11 @@ class TripCheckDraftNotifier extends Notifier<TripCheckDraft> {
   /// null이면 선택 해제
   void setCompanionType(CompanionType? type) =>
       state = state.copyWith(companionType: type);
+
+  // 지갑 기준 플로우
+
+  void setMaxBudget(BudgetRange budget) =>
+      state = state.copyWith(maxBudget: budget);
 }
 
 final tripCheckDraftProvider =

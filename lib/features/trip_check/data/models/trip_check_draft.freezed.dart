@@ -24,7 +24,10 @@ mixin _$TripCheckDraft {
       throw _privateConstructorUsedError; // 여행 가능 시기 (시작일만 고르면 시작일 = 종료일)
   int? get peopleCount =>
       throw _privateConstructorUsedError; // 여행 인원 (비어 있으면 null)
-  CompanionType? get companionType => throw _privateConstructorUsedError;
+  CompanionType? get companionType =>
+      throw _privateConstructorUsedError; // 여행 구성원 유형
+  // 지갑 기준 플로우
+  BudgetRange? get maxBudget => throw _privateConstructorUsedError;
 
   /// Create a copy of TripCheckDraft
   /// with the given fields replaced by the non-null parameter values.
@@ -45,6 +48,7 @@ abstract class $TripCheckDraftCopyWith<$Res> {
     DateTimeRange<DateTime>? travelPeriod,
     int? peopleCount,
     CompanionType? companionType,
+    BudgetRange? maxBudget,
   });
 }
 
@@ -67,6 +71,7 @@ class _$TripCheckDraftCopyWithImpl<$Res, $Val extends TripCheckDraft>
     Object? travelPeriod = freezed,
     Object? peopleCount = freezed,
     Object? companionType = freezed,
+    Object? maxBudget = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -86,6 +91,10 @@ class _$TripCheckDraftCopyWithImpl<$Res, $Val extends TripCheckDraft>
                 ? _value.companionType
                 : companionType // ignore: cast_nullable_to_non_nullable
                       as CompanionType?,
+            maxBudget: freezed == maxBudget
+                ? _value.maxBudget
+                : maxBudget // ignore: cast_nullable_to_non_nullable
+                      as BudgetRange?,
           )
           as $Val,
     );
@@ -106,6 +115,7 @@ abstract class _$$TripCheckDraftImplCopyWith<$Res>
     DateTimeRange<DateTime>? travelPeriod,
     int? peopleCount,
     CompanionType? companionType,
+    BudgetRange? maxBudget,
   });
 }
 
@@ -127,6 +137,7 @@ class __$$TripCheckDraftImplCopyWithImpl<$Res>
     Object? travelPeriod = freezed,
     Object? peopleCount = freezed,
     Object? companionType = freezed,
+    Object? maxBudget = freezed,
   }) {
     return _then(
       _$TripCheckDraftImpl(
@@ -146,6 +157,10 @@ class __$$TripCheckDraftImplCopyWithImpl<$Res>
             ? _value.companionType
             : companionType // ignore: cast_nullable_to_non_nullable
                   as CompanionType?,
+        maxBudget: freezed == maxBudget
+            ? _value.maxBudget
+            : maxBudget // ignore: cast_nullable_to_non_nullable
+                  as BudgetRange?,
       ),
     );
   }
@@ -159,6 +174,7 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
     this.travelPeriod,
     this.peopleCount,
     this.companionType,
+    this.maxBudget,
   });
 
   @override
@@ -173,10 +189,14 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
   // 여행 인원 (비어 있으면 null)
   @override
   final CompanionType? companionType;
+  // 여행 구성원 유형
+  // 지갑 기준 플로우
+  @override
+  final BudgetRange? maxBudget;
 
   @override
   String toString() {
-    return 'TripCheckDraft(tripType: $tripType, travelPeriod: $travelPeriod, peopleCount: $peopleCount, companionType: $companionType)';
+    return 'TripCheckDraft(tripType: $tripType, travelPeriod: $travelPeriod, peopleCount: $peopleCount, companionType: $companionType, maxBudget: $maxBudget)';
   }
 
   @override
@@ -191,7 +211,9 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
             (identical(other.peopleCount, peopleCount) ||
                 other.peopleCount == peopleCount) &&
             (identical(other.companionType, companionType) ||
-                other.companionType == companionType));
+                other.companionType == companionType) &&
+            (identical(other.maxBudget, maxBudget) ||
+                other.maxBudget == maxBudget));
   }
 
   @override
@@ -201,6 +223,7 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
     travelPeriod,
     peopleCount,
     companionType,
+    maxBudget,
   );
 
   /// Create a copy of TripCheckDraft
@@ -221,6 +244,7 @@ abstract class _TripCheckDraft implements TripCheckDraft {
     final DateTimeRange<DateTime>? travelPeriod,
     final int? peopleCount,
     final CompanionType? companionType,
+    final BudgetRange? maxBudget,
   }) = _$TripCheckDraftImpl;
 
   @override
@@ -231,7 +255,10 @@ abstract class _TripCheckDraft implements TripCheckDraft {
   @override
   int? get peopleCount; // 여행 인원 (비어 있으면 null)
   @override
-  CompanionType? get companionType;
+  CompanionType? get companionType; // 여행 구성원 유형
+  // 지갑 기준 플로우
+  @override
+  BudgetRange? get maxBudget;
 
   /// Create a copy of TripCheckDraft
   /// with the given fields replaced by the non-null parameter values.

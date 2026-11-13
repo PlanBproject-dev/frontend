@@ -15,6 +15,7 @@ import 'package:plan_b/features/home/presentation/home_page.dart';
 import 'package:plan_b/core/config/pages/not_found_page.dart';
 import 'package:plan_b/core/config/pages/todo_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/budget_first_basic_info_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/budget_first_budget_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_check_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_type_page.dart';
 
@@ -145,7 +146,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: AppPaths.budgetFirstBudget,
-            builder: (context, state) => const TodoPage('지갑 기준 · 최대 예산'),
+            builder: (context, state) => const BudgetFirstBudgetPage(),
           ),
           GoRoute(
             path: AppPaths.budgetFirstDetails,
