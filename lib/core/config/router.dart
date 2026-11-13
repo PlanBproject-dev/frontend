@@ -15,6 +15,7 @@ import 'package:plan_b/features/home/presentation/home_page.dart';
 import 'package:plan_b/core/config/pages/not_found_page.dart';
 import 'package:plan_b/core/config/pages/todo_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_check_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/trip_type_page.dart';
 
 // 탭바를 덮는 화면(local Shell, 전체 화면 라우트)이 올라가는 최상위 내비게이터
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -25,7 +26,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
     // TODO
     // 나중에 로그인 연동할 때 스플래시로 바꾸고 로그인 상태에 따른 redirect 추가 필요함
-    initialLocation: AppRoutes.home,
+    initialLocation: AppRoutes.tripCheck,
 
     // '/'로 들어오면 홈으로 리다이렉트
     redirect: (context, state) =>
@@ -135,7 +136,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         routes: [
           GoRoute(
             path: AppPaths.tripType,
-            builder: (context, state) => const TodoPage('Step 1 여행 유형 선택'),
+            builder: (context, state) => const TripTypePage(),
           ),
           GoRoute(
             path: AppPaths.budgetFirstBasicInfo,
