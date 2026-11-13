@@ -23,6 +23,8 @@ import 'package:plan_b/features/trip_check/presentation/pages/goal_first_food_bu
 import 'package:plan_b/features/trip_check/presentation/pages/trip_analysis_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_check_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_type_page.dart';
+import 'package:plan_b/features/trip_select/presentation/pages/trip_select_completed_page.dart';
+import 'package:plan_b/features/trip_select/presentation/pages/trip_select_page.dart';
 
 // 탭바를 덮는 화면(local Shell, 전체 화면 라우트)이 올라가는 최상위 내비게이터
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -147,7 +149,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: AppPaths.budgetFirstBasicInfo,
-            builder: (context, state) => const BudgetFirstBasicInfoPage(),
+            builder: (context, state) => BudgetFirstBasicInfoPage(
+              // 여행 고르기에서 돌아온 경우: 선택한 기준 플로우 안내하는 토스트 생략
+              showGuideToast: state.extra != AppRouteExtras.reselect,
+            ),
           ),
           GoRoute(
             path: AppPaths.budgetFirstBudget,
@@ -159,7 +164,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: AppPaths.goalFirstBasicInfo,
-            builder: (context, state) => const GoalFirstBasicInfoPage(),
+            builder: (context, state) => GoalFirstBasicInfoPage(
+              // 여행 고르기에서 돌아온 경우: 선택한 기준 플로우 안내하는 토스트 생략
+              showGuideToast: state.extra != AppRouteExtras.reselect,
+            ),
           ),
           GoRoute(
             path: AppPaths.goalFirstDetails,
@@ -179,11 +187,13 @@ final routerProvider = Provider<GoRouter>((ref) {
       // 여행 고르기 (탭바 X)
       GoRoute(
         path: AppRoutes.tripSelect,
-        builder: (context, state) => const TodoPage('여행 고르기'),
+        builder: (context, state) => const TripSelectPage(),
         routes: [
           GoRoute(
             path: AppPaths.completed,
-            builder: (context, state) => const TodoPage('여행 플랜 세팅 완료'),
+            builder: (context, state) => TripSelectCompletedPage(
+              planId: state.extra as String?, // 여행 고르기에서 선택한 플랜 id
+            ),
           ),
         ],
       ),
