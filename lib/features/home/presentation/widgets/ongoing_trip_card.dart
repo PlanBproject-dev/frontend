@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:plan_b/core/config/app_routes.dart';
+import 'package:plan_b/shared/providers/selected_plan_id_provider.dart';
 import 'package:plan_b/core/theme/app_colors.dart';
 import 'package:plan_b/core/theme/app_effects.dart';
 import 'package:plan_b/core/theme/app_text_styles.dart';
@@ -14,12 +16,14 @@ import 'package:plan_b/shared/widgets/btn/btn_text_primary.dart';
 class OngoingTripCard extends StatelessWidget {
   const OngoingTripCard({
     super.key,
+    required this.planId,
     required this.thumbnail,
     required this.daysLeft,
     required this.destination,
     required this.tags,
   });
 
+  final String planId;             // 이 카드의 여행 플랜 id
   final ImageProvider thumbnail;   // 여행지 썸네일
   final int daysLeft;              // 디데이 태그용
   final String destination;        // 여행지
@@ -84,7 +88,7 @@ class OngoingTripCard extends StatelessWidget {
                         destination: destination,
                         tags: tags,
                       ),
-                      _ActionButtons(),
+                      _ActionButtons(planId: planId),
                     ],
                   ),
                 ),
@@ -183,12 +187,19 @@ class _TripInfo extends StatelessWidget {
   }
 }
 
-/// 하단 버튼 영역
-class _ActionButtons extends StatelessWidget {
-  const _ActionButtons();
+/// 하단 버튼 영역 : 선택한 플랜 id를 저장한 뒤 해당 화면으로 이동
+class _ActionButtons extends ConsumerWidget {
+  const _ActionButtons({required this.planId});
+
+  final String planId;
+
+  void _open(BuildContext context, WidgetRef ref, String route) {
+    ref.read(selectedPlanIdProvider.notifier).select(planId);
+    context.go(route);
+  }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12),
       decoration: const BoxDecoration(
@@ -201,13 +212,13 @@ class _ActionButtons extends StatelessWidget {
           BtnTextPrimary(
             text: '여행 플랜 보기',
             size: BtnTextSize.sm,
-            onPressed: () => context.go(AppRoutes.planner), // 나의 여행 플래너 화면으로 넘어감
+            onPressed: () => _open(context, ref, AppRoutes.planner),
           ),
           const SizedBox(width: 32),
           BtnTextPrimary(
             text: '여행 코스 보기',
             size: BtnTextSize.sm,
-            onPressed: () => context.go(AppRoutes.course),  // 나의 여행 코스 화면으로 넘어감
+            onPressed: () => _open(context, ref, AppRoutes.course),
           ),
         ],
       ),
