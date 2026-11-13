@@ -23,6 +23,7 @@ import 'package:plan_b/features/trip_check/presentation/pages/goal_first_food_bu
 import 'package:plan_b/features/trip_check/presentation/pages/trip_analysis_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_check_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_type_page.dart';
+import 'package:plan_b/features/trip_select/presentation/pages/trip_select_completed_page.dart';
 import 'package:plan_b/features/trip_select/presentation/pages/trip_select_page.dart';
 
 // 탭바를 덮는 화면(local Shell, 전체 화면 라우트)이 올라가는 최상위 내비게이터
@@ -190,7 +191,9 @@ final routerProvider = Provider<GoRouter>((ref) {
         routes: [
           GoRoute(
             path: AppPaths.completed,
-            builder: (context, state) => const TodoPage('여행 플랜 세팅 완료'),
+            builder: (context, state) => TripSelectCompletedPage(
+              planId: state.extra as String?, // 여행 고르기에서 선택한 플랜 id
+            ),
           ),
         ],
       ),

@@ -63,8 +63,9 @@ class _TripSelectPageState extends ConsumerState<TripSelectPage> {
 
   void _onConfirm() {
     if (_selectedPlanId == null) return;
-    // TODO: 선택한 플랜 서버 저장 (선택 id: _selectedPlanId)
-    context.push(AppRoutes.tripSelectCompleted);
+    // TODO: 선택한 플랜 서버 저장 & 플랜 생성은 완료 페이지에서 로딩과 함께 처리
+    // (실패하면 완료 페이지가 pop해서 여기로 돌아오므로 push 유지)
+       context.push(AppRoutes.tripSelectCompleted, extra: _selectedPlanId);
   }
 
   @override
