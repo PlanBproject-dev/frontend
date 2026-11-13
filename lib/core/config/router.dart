@@ -8,11 +8,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:plan_b/core/config/app_routes.dart';
-import 'package:plan_b/core/config/pages/not_found_page.dart';
-import 'package:plan_b/core/config/pages/todo_page.dart';
 import 'package:plan_b/core/config/shell/global_shell.dart';
 import 'package:plan_b/core/config/shell/local_shell.dart';
+
 import 'package:plan_b/features/home/presentation/home_page.dart';
+import 'package:plan_b/core/config/pages/not_found_page.dart';
+import 'package:plan_b/core/config/pages/todo_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/trip_check_page.dart';
 
 // 탭바를 덮는 화면(local Shell, 전체 화면 라우트)이 올라가는 최상위 내비게이터
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -129,7 +131,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       // 단계 이동은 push로 쌓음 (go를 쓰면 중간 단계가 스택에서 빠지므로)
       GoRoute(
         path: AppRoutes.tripCheck,
-        builder: (context, state) => const TodoPage('맞춤 여행 체크 시작'),
+        builder: (context, state) => const TripCheckPage(),
         routes: [
           GoRoute(
             path: AppPaths.tripType,
