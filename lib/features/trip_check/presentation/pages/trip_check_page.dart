@@ -1,4 +1,5 @@
 // 맞춤 여행 체크 시작(인트로) 화면
+// - 시작 버튼을 누를 때마다 입력 상태를 초기화하고 새 플로우 시작
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,14 +13,9 @@ import 'package:plan_b/shared/widgets/btn/cta.dart';
 import 'package:plan_b/shared/widgets/header/title_header.dart';
 import 'package:plan_b/shared/widgets/nav/top_app_bar.dart';
 
-class TripCheckPage extends ConsumerStatefulWidget {
+class TripCheckPage extends ConsumerWidget {
   const TripCheckPage({super.key});
 
-  @override
-  ConsumerState<TripCheckPage> createState() => _TripCheckPageState();
-}
-
-class _TripCheckPageState extends ConsumerState<TripCheckPage> {
   static const double _titleExtraTop = 20;   // 상단바 ~ 제목 간격 36 (= 추가 20 + TitleHeader 내부 패딩 16)
   static const double _ctaBottomGap = 110;   // CTA ~ 하단 safe area 간격
 
@@ -28,18 +24,7 @@ class _TripCheckPageState extends ConsumerState<TripCheckPage> {
   static const double _earthOffsetY = 4.1;   // 피그마상 화면 중앙에서 아래로 4.1 이동
 
   @override
-  void initState() {
-    super.initState();
-    // 인트로 진입 시 입력 상태 초기화
-    // (빌드 중에는 provider 상태를 바꿀 수 없어서 첫 프레임 이후에 실행)
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      ref.read(tripCheckDraftProvider.notifier).reset();
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Stack(
       children: [
         // 배경: 흰색 + 배경 하단 ellipse
@@ -79,7 +64,11 @@ class _TripCheckPageState extends ConsumerState<TripCheckPage> {
             padding: const EdgeInsets.only(bottom: _ctaBottomGap),
             child: Cta(
               text: '맞춤 여행 계획 추천 시작!',
-              onPressed: () => context.push(AppRoutes.tripType),
+              onPressed: () {
+                // 새 플로우 시작: 이전 입력값 초기화 (뒤로가기로 인트로에 돌아온 경우 포함)
+                ref.read(tripCheckDraftProvider.notifier).reset();
+                context.push(AppRoutes.tripType);
+              },
             ),
           ),
         ),

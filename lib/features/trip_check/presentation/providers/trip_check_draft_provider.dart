@@ -1,5 +1,5 @@
 // 맞춤 여행 체크 플로우 전체가 공유하는 입력 상태
-// - 초기화: 인트로(TripCheckPage) 진입 시 reset() 호출한다
+// - 초기화: 인트로(TripCheckPage)에서 시작 버튼을 누를 때 reset() 호출한다
 
 import 'package:flutter/material.dart' show DateTimeRange;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
