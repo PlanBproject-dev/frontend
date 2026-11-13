@@ -20,6 +20,7 @@ import 'package:plan_b/features/trip_check/presentation/pages/budget_first_detai
 import 'package:plan_b/features/trip_check/presentation/pages/goal_first_basic_info_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/goal_first_details_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/goal_first_food_budget_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/trip_analysis_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_check_page.dart';
 import 'package:plan_b/features/trip_check/presentation/pages/trip_type_page.dart';
 
@@ -170,7 +171,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: AppPaths.tripAnalysis,
-            builder: (context, state) => const TodoPage('여행 계획 분석'),
+            builder: (context, state) => const TripAnalysisPage(),
           ),
         ],
       ),
