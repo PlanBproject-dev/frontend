@@ -11,6 +11,9 @@ class FieldLabel extends StatelessWidget {
   final String text;
   final String? caption;  // null이면 라벨만 표시
 
+  static const double _gap = 8;     // 라벨 ~ 안내 문구 최소 가로 간격
+  static const double _runGap = 4;  // 안내 문구가 다음 줄로 내려갔을 때 세로 간격
+
   @override
   Widget build(BuildContext context) {
     final label = Text(
@@ -20,8 +23,11 @@ class FieldLabel extends StatelessWidget {
 
     if (caption == null) return label;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Wrap(
+      alignment: WrapAlignment.spaceBetween,      // 한 줄일 때: 라벨 왼쪽 끝 / 안내 문구 오른쪽 끝
+      crossAxisAlignment: WrapCrossAlignment.center, // 높이가 다른 두 텍스트를 세로 가운데 정렬
+      spacing: _gap,
+      runSpacing: _runGap,
       children: [
         label,
         Text(
