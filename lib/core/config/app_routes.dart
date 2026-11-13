@@ -61,3 +61,8 @@ abstract final class AppPaths {
   // 여행 고르기 ('/trip-select' 기준)
   static const String completed = 'completed';
 }
+/// 라우트 이동 시 extra로 넘기는 값
+abstract final class AppRouteExtras {
+  // 여행 고르기 -> '여행 조건 다시 선택'으로 기본 정보 입력에 재진입
+  static const String reselect = 'reselect';
+}

@@ -20,7 +20,9 @@ import 'package:plan_b/shared/widgets/header/title_header.dart';
 import 'package:plan_b/shared/widgets/nav/top_app_bar.dart';
 
 class GoalFirstBasicInfoPage extends ConsumerStatefulWidget {
-  const GoalFirstBasicInfoPage({super.key});
+  const GoalFirstBasicInfoPage({super.key, this.showGuideToast = true});
+
+  final bool showGuideToast; // false: 여행 고르기에서 조건 재선택으로 들어온 경우
 
   @override
   ConsumerState<GoalFirstBasicInfoPage> createState() =>
@@ -47,6 +49,11 @@ class _GoalFirstBasicInfoPageState
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       showToast(context, text: '여행 목표를 기준으로 선택했어요');
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !widget.showGuideToast) return;
+      showToast(context, text: '내 지갑을 기준으로 선택했어요');
     });
   }
 

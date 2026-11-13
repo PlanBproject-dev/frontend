@@ -19,7 +19,9 @@ import 'package:plan_b/shared/widgets/header/title_header.dart';
 import 'package:plan_b/shared/widgets/nav/top_app_bar.dart';
 
 class BudgetFirstBasicInfoPage extends ConsumerStatefulWidget {
-  const BudgetFirstBasicInfoPage({super.key});
+  const BudgetFirstBasicInfoPage({super.key, this.showGuideToast = true});
+
+  final bool showGuideToast; // false: 여행 고르기에서 조건 재선택으로 들어온 경우
 
   @override
   ConsumerState<BudgetFirstBasicInfoPage> createState() =>
@@ -45,6 +47,11 @@ class _BudgetFirstBasicInfoPageState
     // 이전 화면에서 '다음'을 눌러 넘어왔을 때 선택한 기준 안내
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
+      showToast(context, text: '내 지갑을 기준으로 선택했어요');
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !widget.showGuideToast) return;
       showToast(context, text: '내 지갑을 기준으로 선택했어요');
     });
   }
