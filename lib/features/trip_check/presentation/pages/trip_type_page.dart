@@ -1,43 +1,42 @@
 // 맞춤 여행 체크 Step 1: 여행 계획 기준 선택 (지갑 기준 / 여행 목표 기준)
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:plan_b/core/config/app_routes.dart';
 import 'package:plan_b/features/trip_check/data/models/trip_selection_type.dart';
+import 'package:plan_b/features/trip_check/presentation/providers/trip_check_draft_provider.dart';
 import 'package:plan_b/features/trip_check/presentation/widgets/trip_selection/trip_selection.dart';
 import 'package:plan_b/shared/widgets/app_page.dart';
 import 'package:plan_b/shared/widgets/btn/cta.dart';
 import 'package:plan_b/shared/widgets/header/title_header.dart';
 import 'package:plan_b/shared/widgets/nav/top_app_bar.dart';
 
-class TripTypePage extends StatefulWidget {
+class TripTypePage extends ConsumerWidget {
   const TripTypePage({super.key});
 
-  @override
-  State<TripTypePage> createState() => _TripTypePageState();
-}
-
-class _TripTypePageState extends State<TripTypePage> {
   static const double _selectionTopGap = 58; // 제목 헤더 ~ 선택 카드 간격
   static const double _ctaBottomGap = 20;    // CTA ~ 하단 safe area 간격
 
-  TripSelectionType? _selected; // null이면 아직 선택 안 함 (CTA 비활성)
-
-  void _onNext() {
-    final selected = _selected;
-    if (selected == null) return;
-
-    // 선택한 기준에 따라 플로우 분기 (단계 이동은 push로 쌓음)
-    final nextRoute = switch (selected) {
-      TripSelectionType.budget => AppRoutes.budgetFirstBasicInfo,
-      TripSelectionType.goal => AppRoutes.goalFirstBasicInfo,
-    };
-    context.push(nextRoute);
-  }
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // tripType만 구독 (다른 단계 입력이 바뀌어도 이 화면은 다시 그리지 않음)
+    final selected = ref.watch(
+      tripCheckDraftProvider.select((draft) => draft.tripType),
+    );
+
+    void _onNext() {
+      if (selected == null) return;
+
+      // 선택한 기준에 따라 플로우 분기 (단계 이동은 push로 쌓음)
+      final nextRoute = switch (selected) {
+        TripSelectionType.budget => AppRoutes.budgetFirstBasicInfo,
+        TripSelectionType.goal => AppRoutes.goalFirstBasicInfo,
+      };
+      context.push(nextRoute);
+    }
+
     return AppPage(
       appBar: const TopAppBar(),
       header: const TitleHeader(
@@ -50,8 +49,8 @@ class _TripTypePageState extends State<TripTypePage> {
         children: [
           const SizedBox(height: _selectionTopGap),
           TripSelection(
-            selected: _selected,
-            onSelected: (type) => setState(() => _selected = type),
+            selected: selected,
+            onSelected: ref.read(tripCheckDraftProvider.notifier).selectTripType,
           ),
         ],
       ),
@@ -59,7 +58,7 @@ class _TripTypePageState extends State<TripTypePage> {
         padding: const EdgeInsets.only(bottom: _ctaBottomGap),
         child: Cta(
           text: '다음',
-          isActive: _selected != null,
+          isActive: selected != null,
           onPressed: _onNext,
         ),
       ),

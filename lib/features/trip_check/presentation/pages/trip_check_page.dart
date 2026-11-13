@@ -1,24 +1,42 @@
 // 맞춤 여행 체크 시작(인트로) 화면
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:plan_b/core/config/app_routes.dart';
+import 'package:plan_b/features/trip_check/presentation/providers/trip_check_draft_provider.dart';
 import 'package:plan_b/shared/widgets/app_page.dart';
 import 'package:plan_b/shared/widgets/background/bg_bottom_ellipse.dart';
 import 'package:plan_b/shared/widgets/btn/cta.dart';
 import 'package:plan_b/shared/widgets/header/title_header.dart';
 import 'package:plan_b/shared/widgets/nav/top_app_bar.dart';
 
-class TripCheckPage extends StatelessWidget {
+class TripCheckPage extends ConsumerStatefulWidget {
   const TripCheckPage({super.key});
 
+  @override
+  ConsumerState<TripCheckPage> createState() => _TripCheckPageState();
+}
+
+class _TripCheckPageState extends ConsumerState<TripCheckPage> {
   static const double _titleExtraTop = 20;   // 상단바 ~ 제목 간격 36 (= 추가 20 + TitleHeader 내부 패딩 16)
   static const double _ctaBottomGap = 110;   // CTA ~ 하단 safe area 간격
 
   static const double _earthWidth = 262.4;
   static const double _earthHeight = 239.8;
   static const double _earthOffsetY = 4.1;   // 피그마상 화면 중앙에서 아래로 4.1 이동
+
+  @override
+  void initState() {
+    super.initState();
+    // 인트로 진입 시 입력 상태 초기화
+    // (빌드 중에는 provider 상태를 바꿀 수 없어서 첫 프레임 이후에 실행)
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      ref.read(tripCheckDraftProvider.notifier).reset();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
