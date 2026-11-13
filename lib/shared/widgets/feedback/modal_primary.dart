@@ -7,7 +7,7 @@ import 'package:plan_b/shared/widgets/btn/cta_binary.dart';
 
 /// 모달을 띄우고, 어떤 버튼을 눌렀는지 결과로 돌려줌
 /// true: 확인(primary) / false: 돌아가기(secondary)
-Future<bool?> showModalPrimary(
+Future<bool> showModalPrimary(
   BuildContext context, {
   required String title,
   String? caption,
