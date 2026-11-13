@@ -35,13 +35,13 @@ abstract final class AppColors {
   static const LinearGradient bgGradientTop = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [white, blue50],
+    colors: [blue50, white],
     stops: [0.0, 1.0],
   );
   static const LinearGradient bgGradientBottom = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [blue50, white],
+    colors: [white, blue50],
     stops: [0.0, 1.0],
   );
   static const LinearGradient bgGradientLeft = LinearGradient(
