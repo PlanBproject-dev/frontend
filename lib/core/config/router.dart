@@ -8,11 +8,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:plan_b/core/config/app_routes.dart';
-import 'package:plan_b/core/config/pages/not_found_page.dart';
-import 'package:plan_b/core/config/pages/todo_page.dart';
 import 'package:plan_b/core/config/shell/global_shell.dart';
 import 'package:plan_b/core/config/shell/local_shell.dart';
+
 import 'package:plan_b/features/home/presentation/home_page.dart';
+import 'package:plan_b/core/config/pages/not_found_page.dart';
+import 'package:plan_b/core/config/pages/todo_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/budget_first_basic_info_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/budget_first_budget_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/budget_first_details_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/goal_first_basic_info_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/goal_first_details_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/goal_first_food_budget_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/trip_analysis_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/trip_check_page.dart';
+import 'package:plan_b/features/trip_check/presentation/pages/trip_type_page.dart';
 
 // 탭바를 덮는 화면(local Shell, 전체 화면 라우트)이 올라가는 최상위 내비게이터
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -23,7 +33,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
     // TODO
     // 나중에 로그인 연동할 때 스플래시로 바꾸고 로그인 상태에 따른 redirect 추가 필요함
-    initialLocation: AppRoutes.home,
+    initialLocation: AppRoutes.tripCheck,
 
     // '/'로 들어오면 홈으로 리다이렉트
     redirect: (context, state) =>
@@ -129,39 +139,39 @@ final routerProvider = Provider<GoRouter>((ref) {
       // 단계 이동은 push로 쌓음 (go를 쓰면 중간 단계가 스택에서 빠지므로)
       GoRoute(
         path: AppRoutes.tripCheck,
-        builder: (context, state) => const TodoPage('맞춤 여행 체크 시작'),
+        builder: (context, state) => const TripCheckPage(),
         routes: [
           GoRoute(
             path: AppPaths.tripType,
-            builder: (context, state) => const TodoPage('Step 1 여행 유형 선택'),
+            builder: (context, state) => const TripTypePage(),
           ),
           GoRoute(
             path: AppPaths.budgetFirstBasicInfo,
-            builder: (context, state) => const TodoPage('지갑 기준 · 기본 정보'),
+            builder: (context, state) => const BudgetFirstBasicInfoPage(),
           ),
           GoRoute(
             path: AppPaths.budgetFirstBudget,
-            builder: (context, state) => const TodoPage('지갑 기준 · 최대 예산'),
+            builder: (context, state) => const BudgetFirstBudgetPage(),
           ),
           GoRoute(
             path: AppPaths.budgetFirstDetails,
-            builder: (context, state) => const TodoPage('지갑 기준 · 세부 취향'),
+            builder: (context, state) => const BudgetFirstDetailsPage(),
           ),
           GoRoute(
             path: AppPaths.goalFirstBasicInfo,
-            builder: (context, state) => const TodoPage('목표 기준 · 기본 정보'),
+            builder: (context, state) => const GoalFirstBasicInfoPage(),
           ),
           GoRoute(
             path: AppPaths.goalFirstDetails,
-            builder: (context, state) => const TodoPage('목표 기준 · 세부 취향'),
+            builder: (context, state) => const GoalFirstDetailsPage(),
           ),
           GoRoute(
             path: AppPaths.goalFirstFoodBudget,
-            builder: (context, state) => const TodoPage('목표 기준 · 식사 예산'),
+            builder: (context, state) => const GoalFirstFoodBudgetPage(),
           ),
           GoRoute(
             path: AppPaths.tripAnalysis,
-            builder: (context, state) => const TodoPage('여행 계획 분석'),
+            builder: (context, state) => const TripAnalysisPage(),
           ),
         ],
       ),
