@@ -35,7 +35,8 @@ final routerProvider = Provider<GoRouter>((ref) {
     navigatorKey: _rootNavigatorKey,
 
     // TODO
-    // 나중에 로그인 연동할 때 스플래시로 바꾸고 로그인 상태에 따른 redirect 추가 필요함
+    // 나중에 로그인 연동할 때 로그인 상태에 따른 redirect 추가 필요함
+    // (스플래시는 flutter_native_splash 네이티브 화면이라 별도 라우트 없음)
     initialLocation: AppRoutes.tripCheck,
 
     redirect: (context, state) {
@@ -57,11 +58,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     errorBuilder: (context, state) => const NotFoundPage(),
 
     routes: [
-      // 서비스 진입 화면 (로그인 구현 전까지는 직접 이동할 때만 사용)
-      GoRoute(
-        path: AppRoutes.splash,
-        builder: (context, state) => const TodoPage('스플래시'),
-      ),
+      // 로그인 화면 (로그인 구현 전까지는 직접 이동할 때만 사용)
       GoRoute(
         path: AppRoutes.login,
         builder: (context, state) => const TodoPage('로그인'),

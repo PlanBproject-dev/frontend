@@ -3,8 +3,7 @@
 // - AppPaths: router.dart에서 하위 라우트를 정의할 때만 쓰는 경로 조각
 
 abstract final class AppRoutes {
-  // 서비스 진입 (탭바 없음)
-  static const String splash = '/splash';
+  // 로그인 (탭바 없음)
   static const String login = '/login';
 
   // global_tab 사용
