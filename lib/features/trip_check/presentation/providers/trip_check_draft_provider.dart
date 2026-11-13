@@ -1,8 +1,10 @@
 // 맞춤 여행 체크 플로우 전체가 공유하는 입력 상태
 // - 초기화: 인트로(TripCheckPage) 진입 시 reset() 호출한다
 
+import 'package:flutter/material.dart' show DateTimeRange;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:plan_b/features/trip_check/data/models/companion_type.dart';
 import 'package:plan_b/features/trip_check/data/models/trip_check_draft.dart';
 import 'package:plan_b/features/trip_check/data/models/trip_selection_type.dart';
 
@@ -19,6 +21,18 @@ class TripCheckDraftNotifier extends Notifier<TripCheckDraft> {
     if (state.tripType == type) return;
     state = TripCheckDraft(tripType: type);
   }
+
+  // 기본 정보
+
+  void setTravelPeriod(DateTimeRange period) =>
+      state = state.copyWith(travelPeriod: period);
+
+  void setPeopleCount(int? count) =>
+      state = state.copyWith(peopleCount: count);
+
+  /// null이면 선택 해제
+  void setCompanionType(CompanionType? type) =>
+      state = state.copyWith(companionType: type);
 }
 
 final tripCheckDraftProvider =

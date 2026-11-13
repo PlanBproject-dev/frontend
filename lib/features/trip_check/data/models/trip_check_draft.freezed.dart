@@ -17,7 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TripCheckDraft {
-  TripSelectionType? get tripType => throw _privateConstructorUsedError;
+  TripSelectionType? get tripType =>
+      throw _privateConstructorUsedError; // Step 1 여행 계획 기준 (null이면 미선택)
+  // 기본 정보
+  DateTimeRange<DateTime>? get travelPeriod =>
+      throw _privateConstructorUsedError; // 여행 가능 시기 (시작일만 고르면 시작일 = 종료일)
+  int? get peopleCount =>
+      throw _privateConstructorUsedError; // 여행 인원 (비어 있으면 null)
+  CompanionType? get companionType => throw _privateConstructorUsedError;
 
   /// Create a copy of TripCheckDraft
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +40,12 @@ abstract class $TripCheckDraftCopyWith<$Res> {
     $Res Function(TripCheckDraft) then,
   ) = _$TripCheckDraftCopyWithImpl<$Res, TripCheckDraft>;
   @useResult
-  $Res call({TripSelectionType? tripType});
+  $Res call({
+    TripSelectionType? tripType,
+    DateTimeRange<DateTime>? travelPeriod,
+    int? peopleCount,
+    CompanionType? companionType,
+  });
 }
 
 /// @nodoc
@@ -50,13 +62,30 @@ class _$TripCheckDraftCopyWithImpl<$Res, $Val extends TripCheckDraft>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? tripType = freezed}) {
+  $Res call({
+    Object? tripType = freezed,
+    Object? travelPeriod = freezed,
+    Object? peopleCount = freezed,
+    Object? companionType = freezed,
+  }) {
     return _then(
       _value.copyWith(
             tripType: freezed == tripType
                 ? _value.tripType
                 : tripType // ignore: cast_nullable_to_non_nullable
                       as TripSelectionType?,
+            travelPeriod: freezed == travelPeriod
+                ? _value.travelPeriod
+                : travelPeriod // ignore: cast_nullable_to_non_nullable
+                      as DateTimeRange<DateTime>?,
+            peopleCount: freezed == peopleCount
+                ? _value.peopleCount
+                : peopleCount // ignore: cast_nullable_to_non_nullable
+                      as int?,
+            companionType: freezed == companionType
+                ? _value.companionType
+                : companionType // ignore: cast_nullable_to_non_nullable
+                      as CompanionType?,
           )
           as $Val,
     );
@@ -72,7 +101,12 @@ abstract class _$$TripCheckDraftImplCopyWith<$Res>
   ) = __$$TripCheckDraftImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TripSelectionType? tripType});
+  $Res call({
+    TripSelectionType? tripType,
+    DateTimeRange<DateTime>? travelPeriod,
+    int? peopleCount,
+    CompanionType? companionType,
+  });
 }
 
 /// @nodoc
@@ -88,13 +122,30 @@ class __$$TripCheckDraftImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? tripType = freezed}) {
+  $Res call({
+    Object? tripType = freezed,
+    Object? travelPeriod = freezed,
+    Object? peopleCount = freezed,
+    Object? companionType = freezed,
+  }) {
     return _then(
       _$TripCheckDraftImpl(
         tripType: freezed == tripType
             ? _value.tripType
             : tripType // ignore: cast_nullable_to_non_nullable
                   as TripSelectionType?,
+        travelPeriod: freezed == travelPeriod
+            ? _value.travelPeriod
+            : travelPeriod // ignore: cast_nullable_to_non_nullable
+                  as DateTimeRange<DateTime>?,
+        peopleCount: freezed == peopleCount
+            ? _value.peopleCount
+            : peopleCount // ignore: cast_nullable_to_non_nullable
+                  as int?,
+        companionType: freezed == companionType
+            ? _value.companionType
+            : companionType // ignore: cast_nullable_to_non_nullable
+                  as CompanionType?,
       ),
     );
   }
@@ -103,14 +154,29 @@ class __$$TripCheckDraftImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TripCheckDraftImpl implements _TripCheckDraft {
-  const _$TripCheckDraftImpl({this.tripType});
+  const _$TripCheckDraftImpl({
+    this.tripType,
+    this.travelPeriod,
+    this.peopleCount,
+    this.companionType,
+  });
 
   @override
   final TripSelectionType? tripType;
+  // Step 1 여행 계획 기준 (null이면 미선택)
+  // 기본 정보
+  @override
+  final DateTimeRange<DateTime>? travelPeriod;
+  // 여행 가능 시기 (시작일만 고르면 시작일 = 종료일)
+  @override
+  final int? peopleCount;
+  // 여행 인원 (비어 있으면 null)
+  @override
+  final CompanionType? companionType;
 
   @override
   String toString() {
-    return 'TripCheckDraft(tripType: $tripType)';
+    return 'TripCheckDraft(tripType: $tripType, travelPeriod: $travelPeriod, peopleCount: $peopleCount, companionType: $companionType)';
   }
 
   @override
@@ -119,11 +185,23 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
         (other.runtimeType == runtimeType &&
             other is _$TripCheckDraftImpl &&
             (identical(other.tripType, tripType) ||
-                other.tripType == tripType));
+                other.tripType == tripType) &&
+            (identical(other.travelPeriod, travelPeriod) ||
+                other.travelPeriod == travelPeriod) &&
+            (identical(other.peopleCount, peopleCount) ||
+                other.peopleCount == peopleCount) &&
+            (identical(other.companionType, companionType) ||
+                other.companionType == companionType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, tripType);
+  int get hashCode => Object.hash(
+    runtimeType,
+    tripType,
+    travelPeriod,
+    peopleCount,
+    companionType,
+  );
 
   /// Create a copy of TripCheckDraft
   /// with the given fields replaced by the non-null parameter values.
@@ -138,11 +216,22 @@ class _$TripCheckDraftImpl implements _TripCheckDraft {
 }
 
 abstract class _TripCheckDraft implements TripCheckDraft {
-  const factory _TripCheckDraft({final TripSelectionType? tripType}) =
-      _$TripCheckDraftImpl;
+  const factory _TripCheckDraft({
+    final TripSelectionType? tripType,
+    final DateTimeRange<DateTime>? travelPeriod,
+    final int? peopleCount,
+    final CompanionType? companionType,
+  }) = _$TripCheckDraftImpl;
 
   @override
-  TripSelectionType? get tripType;
+  TripSelectionType? get tripType; // Step 1 여행 계획 기준 (null이면 미선택)
+  // 기본 정보
+  @override
+  DateTimeRange<DateTime>? get travelPeriod; // 여행 가능 시기 (시작일만 고르면 시작일 = 종료일)
+  @override
+  int? get peopleCount; // 여행 인원 (비어 있으면 null)
+  @override
+  CompanionType? get companionType;
 
   /// Create a copy of TripCheckDraft
   /// with the given fields replaced by the non-null parameter values.
