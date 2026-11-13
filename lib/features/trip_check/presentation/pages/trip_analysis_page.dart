@@ -49,7 +49,7 @@ class _TripAnalysisPageState extends ConsumerState<TripAnalysisPage> {
         Future<void>.delayed(_minLoadingDuration),
       ]);
       if (!mounted) return;
-      setState(() => _isDone = true);
+      setState(() => _isLoaded = true);
     } catch (_) {
       if (!mounted) return;
       showToast(
