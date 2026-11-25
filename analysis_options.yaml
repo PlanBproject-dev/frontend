@@ -1,0 +1,24 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_const_constructors: true
+    avoid_print: true
+    always_use_package_imports: true
+    # prefer_single_quotes: true  # 주석을 해제하면 작은따옴표 사용을 권장하는 규칙 활성화
+
+formatter:
+  # trailing comma를 유지하여 코드의 가독성 높임
+  trailing_commas: preserve
+
+analyzer:
+  errors:
+    invalid_annotation_target: ignore
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
